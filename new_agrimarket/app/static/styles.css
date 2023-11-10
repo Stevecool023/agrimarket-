@@ -84,6 +84,18 @@ nav a {
     height: auto;
 }
 
+.brand-images {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-images img {
+    max-width: 100px; /* Adjust the width as needed */
+    height: auto;
+}
+
 footer {
     margin-top: 30px;
     background-color: #333;
