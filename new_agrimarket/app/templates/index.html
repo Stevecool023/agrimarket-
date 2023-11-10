@@ -12,12 +12,11 @@
   <header>
     <div class="logo">
       <img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
-    </div>
-    <div class="brand-images-header">
-      <img src="{{ url_for('static', filename='images/TIMAM - Kamagera.mp4') }}" alt="TIMAM - Kamagera">
-      <img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
-      <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
-      <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
+      <!-- Add new images at the top horizontally -->
+      <img src="{{ url_for('static', filename='images/TIMAM - Kamagera.mp4') }}" alt="TIMAM - Kamagera" class="header-image">
+      <img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo" class="header-image">
+      <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture" class="header-image">
+      <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo" class="header-image">
     </div>
     <nav>
       <ul>
@@ -58,17 +57,17 @@
         <button>Add to Cart</button>
       </article>
       <!-- Repeat for other products -->
+    </section>
 
-      <!-- Add a new div for the images -->
-      <div class="brand-images">
+    <!-- Add a new div for the images below the featured-products section -->
+    <div class="brand-images">
         <!-- Include the new images horizontally -->
         <img src="{{ url_for('static', filename='images/TIMAM - Kamagera.mp4') }}" alt="TIMAM - Kamagera">
         <img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
         <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
         <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
         <img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
-      </div>
-    </section>
+    </div>
   </div>
 
   <footer>
