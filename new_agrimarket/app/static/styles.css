@@ -18,9 +18,15 @@ header {
     text-align: center;
 }
 
+.logo {
+    margin: 10px 0; /* Add some margin for better spacing */
+}
+
 .logo img {
-    max-width: 100%;
+    max-width: 80%; /* Adjust the logo size */
     height: auto;
+    display: block;
+    margin: 0 auto; /* Center the logo */
 }
 
 .branding-text {
