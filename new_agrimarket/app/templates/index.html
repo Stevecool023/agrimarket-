@@ -1,41 +1,75 @@
-<!-- ... (previous code unchanged) ... -->
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/agrimoji.jpg') }}" type="image/png">
+  <title>Agrimarket</title>
+</head>
 <body>
-    <!-- ... (header unchanged) ... -->
-
-    <div class="container">
-        <section class="featured-products">
-            <h2>Discover the Future of Agriculture</h2>
-            <p class="branding-text colored">Where convenience meets quality.</p>
-            <p class="branding-text colored">Welcome to the Agricultural Marketplace - Your <u>One-Stop Source</u> for
-                <span style="color: #4CAF50;">Quality</span> Products and Equipment.</p>
-            <p class="branding-text">Explore a world of agriculture, find everything you need, and take your farming
-                to the next level.</p>
-            <p class="branding-text colored">Your <span style="color: #ff7f00;">number 1</span> home for
-                agri-solutions.</p>
-            <p class="branding-text">Your gateway to a <span style="text-decoration: underline;">thriving farming
-                    experience</span>.</p>
-
-            <!-- Example Product Cards (replace with actual image filenames and descriptions) -->
-            <div class="product-card">
-                <img src="{{ url_for('static', filename='images/beansspecies.jpg') }}" alt="Beans Species">
-                <h3>Beans Species</h3>
-                <p>Discover the finest beans species for your farm.</p>
-                <button>Add to Cart</button>
-            </div>
-
-            <div class="product-card">
-                <img src="{{ url_for('static', filename='images/cerialistic.jpg') }}" alt="Cerialistic">
-                <h3>Cerialistic</h3>
-                <p>Explore the latest cerialistic products in the market.</p>
-                <button>Add to Cart</button>
-            </div>
-
-            <!-- Repeat for other products -->
-        </section>
+  <header>
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
     </div>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/equipment">Equipment</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/add_product">Add_Product</a></li>
+      </ul>
+    </nav>
+    <div class="search-cart">
+      <input type="text" placeholder="Search...">
+      <a href="#" class="cart-icon">Cart</a>
+    </div>
+  </header>
 
-    <!-- ... (footer unchanged) ... -->
+  <div class="container">
+    <section class="featured-products">
+      <h2>Discover the Future of Agriculture</h2>
+      <p class="branding-text">Where convenience meets quality.</p>
+      <p class="branding-text colored">Welcome to the Agricultural Marketplace - Your One-Stop Source for Quality Products and Equipment.</p>
+      <p class="branding-text">Explore a world of agriculture, find everything you need, and take your farming to the next level.</p>
+      <p class="branding-text colored">Your number 1 home for agri-solutions.</p>
+      <p class="branding-text">Your gateway to a thriving farming experience.</p>
+
+      <!-- Example Product Cards (replace with actual image filenames and descriptions) -->
+      <article class="product-card">
+        <img src="{{ url_for('static', filename='images/beansspecies.jpg') }}" alt="Beans Species">
+        <h3>Beans Species</h3>
+        <p>Discover the finest beans species for your farm.</p>
+        <button>Add to Cart</button>
+      </article>
+
+      <article class="product-card">
+        <img src="{{ url_for('static', filename='images/cerialistic.jpg') }}" alt="Cerialistic">
+        <h3>Cerialistic</h3>
+        <p>Explore the latest cerialistic products in the market.</p>
+        <button>Add to Cart</button>
+      </article>
+      <!-- Repeat for other products -->
+    </section>
+  </div>
+
+  <footer>
+    <div class="contact-info">
+      <h3>Contact Us</h3>
+      <p>Email: info@agrimarket.com</p>
+      <p>Phone: +123456789</p>
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/equipment">Equipment</a></li>
+        <li><a href="/products">Products</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </footer>
 </body>
-
 </html>
