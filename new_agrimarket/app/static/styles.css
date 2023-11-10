@@ -103,24 +103,42 @@ nav a {
 .product-category {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Adjust this as needed */
+    justify-content: space-between;
 }
 
 .product {
     width: 18%; /* Adjust this as needed for five items in a row */
     margin-bottom: 20px; /* Adjust spacing between rows */
+    text-align: center; /* Center the content within each product card */
+    border: 1px solid #ddd; /* Add a border for better separation */
+    padding: 10px; /* Add padding for better spacing within each card */
+    box-sizing: border-box; /* Include padding and border in the box model */
 }
 
-/* Inside styles.css */
+.product img {
+    max-width: 100%; /* Make sure images don't exceed the width of their container */
+    height: auto;
+}
+
+/* Add similar styles for the equipment cards in equipment.html */
 .equipment-category {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Adjust this as needed */
+    justify-content: space-between;
 }
 
 .equipment {
-    width: 18%; /* Adjust this as needed for five items in a row */
-    margin-bottom: 20px; /* Adjust spacing between rows */
+    width: 18%;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.equipment img {
+    max-width: 100%;
+    height: auto;
 }
 
 
