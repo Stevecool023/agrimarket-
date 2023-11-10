@@ -19,14 +19,27 @@ header {
 }
 
 .logo {
-    display: flex; /* Use flexbox */
-    justify-content: space-between; /* Evenly distribute items horizontally */
-    align-items: center;
+    text-align: left;
     margin-left: 20px;
+    display: flex; /* Updated to flex display */
+    justify-content: space-between; /* Space evenly */
+    align-items: center;
 }
 
 .logo img {
     max-width: 80px;
+    height: auto;
+}
+
+.brand-images {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-evenly; /* Space evenly */
+    align-items: center;
+}
+
+.brand-images img {
+    max-width: 100px; /* Adjust the width as needed */
     height: auto;
 }
 
@@ -83,18 +96,6 @@ nav a {
 
 .product-card img {
     max-width: 100%;
-    height: auto;
-}
-
-.brand-images {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand-images img {
-    max-width: 100px; /* Adjust the width as needed */
     height: auto;
 }
 
