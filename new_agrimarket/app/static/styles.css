@@ -99,6 +99,31 @@ nav a {
     height: auto;
 }
 
+/* Inside styles.css */
+.product-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust this as needed */
+}
+
+.product {
+    width: 18%; /* Adjust this as needed for five items in a row */
+    margin-bottom: 20px; /* Adjust spacing between rows */
+}
+
+/* Inside styles.css */
+.equipment-category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust this as needed */
+}
+
+.equipment {
+    width: 18%; /* Adjust this as needed for five items in a row */
+    margin-bottom: 20px; /* Adjust spacing between rows */
+}
+
+
 footer {
     margin-top: 30px;
     background-color: #333;
