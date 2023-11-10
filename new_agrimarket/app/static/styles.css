@@ -19,7 +19,9 @@ header {
 }
 
 .logo {
-    text-align: left;
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Evenly distribute items horizontally */
+    align-items: center;
     margin-left: 20px;
 }
 
