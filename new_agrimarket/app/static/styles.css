@@ -6,7 +6,7 @@ body, h1, h2, h3, p, ul {
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8f8f8;
+    background-color: #f2f2f2; /* Subtle background color */
     color: #333;
     line-height: 1.6;
 }
@@ -19,24 +19,25 @@ header {
 }
 
 .logo {
-    text-align: left; /* Align the logo to the left */
-    margin-left: 20px; /* Add margin to the left of the logo */
+    text-align: left;
+    margin-left: 20px;
 }
 
 .logo img {
-    max-width: 80px; /* Resize the logo */
+    max-width: 80px;
     height: auto;
 }
 
 .branding-text {
     font-size: 1.2em;
     margin-bottom: 10px;
-    line-height: 1.4; /* Increase line height for better readability */
+    line-height: 1.4;
+    color: #4CAF50; /* Theme color */
 }
 
 .colored {
-    color: #ff7f00; /* Orange color for emphasis */
-    font-weight: bold; /* Bold for emphasis */
+    color: #ff7f00;
+    font-weight: bold;
 }
 
 .container {
@@ -44,7 +45,6 @@ header {
     margin: 0 auto;
 }
 
-/* Navigation */
 nav {
     margin-top: 10px;
 }
@@ -64,20 +64,19 @@ nav a {
     font-weight: bold;
 }
 
-/* Search and Cart */
 .search-cart {
     margin-top: 10px;
     text-align: right;
 }
 
-/* Example Product Card */
 .product-card {
     display: inline-block;
-    width: 23%; /* Adjust as needed */
+    width: 23%;
     margin: 10px;
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
+    background-color: white; /* Product card background color */
 }
 
 .product-card img {
@@ -85,7 +84,6 @@ nav a {
     height: auto;
 }
 
-/* Footer */
 footer {
     margin-top: 30px;
     background-color: #333;
