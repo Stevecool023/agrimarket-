@@ -19,23 +19,24 @@ header {
 }
 
 .logo {
-    margin: 10px 0; /* Add some margin for better spacing */
+    text-align: left; /* Align the logo to the left */
+    margin-left: 20px; /* Add margin to the left of the logo */
 }
 
 .logo img {
-    max-width: 80%; /* Adjust the logo size */
+    max-width: 80px; /* Resize the logo */
     height: auto;
-    display: block;
-    margin: 0 auto; /* Center the logo */
 }
 
 .branding-text {
     font-size: 1.2em;
     margin-bottom: 10px;
+    line-height: 1.4; /* Increase line height for better readability */
 }
 
 .colored {
-    color: #4CAF50;
+    color: #ff7f00; /* Orange color for emphasis */
+    font-weight: bold; /* Bold for emphasis */
 }
 
 .container {
@@ -92,4 +93,3 @@ footer {
     padding: 10px;
     text-align: center;
 }
-/* Steve */
