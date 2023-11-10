@@ -28,6 +28,18 @@ header {
     height: auto;
 }
 
+.brand-images-top {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-images-top img {
+    max-width: 100px; /* Adjust the width as needed */
+    height: auto;
+}
+
 .branding-text {
     font-size: 1.2em;
     margin-bottom: 10px;
@@ -84,6 +96,15 @@ nav a {
     height: auto;
 }
 
+.footer {
+    margin-top: 30px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Add new styles for the brand images inside featured-products */
 .brand-images {
     margin-top: 20px;
     display: flex;
@@ -94,12 +115,4 @@ nav a {
 .brand-images img {
     max-width: 100px; /* Adjust the width as needed */
     height: auto;
-}
-
-footer {
-    margin-top: 30px;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
 }
