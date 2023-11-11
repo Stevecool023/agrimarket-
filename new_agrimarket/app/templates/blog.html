@@ -13,10 +13,10 @@
     <header>
 	<b><h1><a href="/">Agrimarket</a></h1></b>
 	<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
-	<b><a href="{{ url_for('products') }}">Products</a></b>
-	<b><a href="{{ url_for('equipment') }}">Equipment</a></b>
-	<b><a href="{{ url_for('blog') }}">Blog</a></b>
-        <b><a href="{{ url_for('add_product') }}">Add Product</a></b>
+	<b><a href="{{ url_for('main.products') }}">Products</a></b>
+	<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
+	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
+        <b><a href="{{ url_for('main.add_product') }}">Add Product</a></b>
     </header>
     
     <section class="blog">
@@ -60,10 +60,10 @@
 
     <footer>
 	<b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
-	<b><li><a href="{{ url_for('products') }}">Products</a></li></b>
-	<b><li><a href="{{ url_for('equipment') }}">Equipment</a></li></b>
-	<b><li><a href="{{ url_for('blog') }}">Blog</a></li></b>
-	<b><li><a href="{{ url_for('add_product') }}">Add Product</a></li></b>
+	<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+	<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	<b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
+	<b><li><a href="{{ url_for('main.add_product') }}">Add Product</a></li></b>
         <p>Contact us at info@agrimarket.com</p>
     </footer>
 </body>
