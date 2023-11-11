@@ -41,6 +41,6 @@ def add_product():
         db.session.commit()
 
         # Redirect to the products page after adding the product
-        return render_template(url_for('products'))
+        return redirect(url_for('products'))
     
     return render_template('add_products.html')
