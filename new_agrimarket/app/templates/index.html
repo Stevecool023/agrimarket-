@@ -21,10 +21,10 @@
     </div>
     	<b><h1><a href="/">Agrimarket</a></h1></b>
         <b><a href="/">Home</a></b>
-	<b><a href="/products">Products</a></b>
-        <b><a href="/equipment">Equipment</a></b>
-        <b><a href="/blog">Blog</a></b>
-        <b><a href="/add_product">Add_Product</a></b>
+	<b><a href="{{ url_for('main.products') }}">Products</a></b>
+	<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
+	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
+	<b><a href="{{ url_for('main.add_product') }}">Add_Product</a></b>
     <div class="search-cart">
       <input type="text" placeholder="Search...">
       <a href="#" class="cart-icon">Cart</a>
@@ -76,9 +76,9 @@
     <div class="footer-links">
       <ul>
 	<b><li><a href="/">Home</a></li></b>
-	<b><li><a href="/products">Products</a></li></b>
-	<b><li><a href="/equipment">Equipment</a></li></b>
-	<b><li><a href="/blog">Blog</a></li></b>
+	<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+	<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	<b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
 	<b><li><a href="#">Contact</a></li></b>
       </ul>
     </div>
