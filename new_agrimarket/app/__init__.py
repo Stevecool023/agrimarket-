@@ -1,3 +1,5 @@
+# app/__init__.py
+
 import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
@@ -18,7 +20,7 @@ def create_app():
     migrate = Migrate(app, db)
 
     # Import and register blueprints
-    from .routes import bp as main_bp
+    from app.routes import bp as main_bp  # Import the Blueprint instance
     app.register_blueprint(main_bp)
 
     return app
