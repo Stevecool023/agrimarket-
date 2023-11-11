@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # script_add_products.py
 
 from app import db
