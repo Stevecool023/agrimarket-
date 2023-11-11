@@ -12,6 +12,10 @@
 <body>
     <header>
         <h1><a href="/">Agrimarket - Home</a></h1>
+	<a href="{{ url_for('homepage') }}">Home</a>
+	<a href="{{ url_for('equipment') }}">Equipment</a>
+	<a href="{{ url_for('blog') }}">Blog</a>
+	<a href="{{ url_for('add_product') }}">Add_Product</a>
         <!-- Add navigation links, search box, etc. -->
     </header>
 
@@ -259,6 +263,10 @@
     </section>
 
     <footer>
+	    <a href="{{ url_for('homepage') }}">Home</a>
+	    <a href="{{ url_for('equipment') }}">Equipment</a>
+	    <a href="{{ url_for('blog') }}">Blog</a>
+	    <a href="{{ url_for('add_product') }}">Add_Product</a>
         <p>Contact us at info@agrimarket.com</p>
     </footer>
 </body>
