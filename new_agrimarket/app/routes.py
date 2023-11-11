@@ -1,7 +1,7 @@
 # app/routes.py
 
-from flask import Blueprint, render_template
-from app.models import Product, BlogPost, Equipment
+from flask import Blueprint, render_template, session
+from app.models import Product, BlogPost, Equipment, Cart
 
 bp = Blueprint('main', __name__)
 
