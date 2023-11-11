@@ -12,7 +12,7 @@
 <body>
     <header>
 	<b><h1><a href="/">Agrimarket</a></h1></b></b>
-	<b><a href="{{ url_for('homepage') }}">Home</a></b>
+	<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
 	<b><a href="{{ url_for('products') }}">Products</a></b>
 	<b><a href="{{ url_for('equipment') }}">Equipment</a></b>
 	<b><a href="{{ url_for('blog') }}">Blog</a></b>
@@ -59,7 +59,7 @@
     </section>
 
     <footer>
-	<b><li><a href="{{ url_for('homepage') }}">Home</a></li></b>
+	<b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
 	<b><li><a href="{{ url_for('products') }}">Products</a></li></b>
 	<b><li><a href="{{ url_for('equipment') }}">Equipment</a></li></b>
 	<b><li><a href="{{ url_for('blog') }}">Blog</a></li></b>

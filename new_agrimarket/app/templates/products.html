@@ -19,7 +19,7 @@
 		<img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
 	</div>
 	<b><h1><a href="/">Agrimarket</a></h1></b>
-	<b><a href="{{ url_for('homepage') }}">Home</a></b>
+	<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
 	<b><a href="{{ url_for('equipment') }}">Equipment</a></b>
 	<b><a href="{{ url_for('blog') }}">Blog</a></b>
 	<b><a href="{{ url_for('add_product') }}">Add_Product</a></b>
@@ -270,7 +270,7 @@
     </section>
 
     <footer>
-	    <b><li><a href="{{ url_for('homepage') }}">Home</a></li></b>
+	    <b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
 	    <b><li><a href="{{ url_for('equipment') }}">Equipment</a></li></b>
 	    <b><li><a href="{{ url_for('blog') }}">Blog</a></li></b>
 	    <b><li><a href="{{ url_for('add_product') }}">Add_Product</a></li></b>
