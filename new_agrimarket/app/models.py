@@ -32,3 +32,11 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User {self.username}>"
+
+class Cart(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    item_type = db.Column(db.String(50), nullable=False)  # 'product' or 'equipment'
+    item_id = db.Column(db.Integer, nullable=False)
+    quantity = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
