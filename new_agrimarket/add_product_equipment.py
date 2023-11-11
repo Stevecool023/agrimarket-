@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # script_add_products.py
 
-from app import db
-from app.models import Product
+from app import create_app, db
+from app.models import Product, Equipment
 
 # Create the flask app and ensure it uses the correct configuration.
 app = create_app()
