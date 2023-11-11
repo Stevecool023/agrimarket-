@@ -12,6 +12,12 @@
 <body>
     <header>
         <h1><a href="/">Agrimarket - Home</a></h1>
+        <nav>
+                <a href="{{ url_for('equipment') }}">Equipment</a>
+                <a href="{{ url_for('products') }}">Products</a>
+                <a href="{{ url_for('blog') }}">Blog</a>
+                <a href="{{ url_for('add_product') }}">Add Product</a>
+        </nav>
         <!-- Add navigation links, search box, etc. -->
     </header>
 
@@ -21,7 +27,7 @@
         <!-- Crop Products -->
         <div class="product-category">
             <h3>Crop Products</h3>
-            
+
             <!-- First Row of Crop Products -->
             <div class="product">
                 <img src="{{ url_for('static', filename='images/cowbest.jpg') }}" alt="Cow Best">
@@ -259,6 +265,12 @@
     </section>
 
     <footer>
+        <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('equipment') }}">Equipment</a>
+                <a href="{{ url_for('blog') }}">Blog</a>
+                <a href="{{ url_for('add_product') }}">Add Product</a>
+        </nav>
         <p>Contact us at info@agrimarket.com</p>
     </footer>
 </body>
