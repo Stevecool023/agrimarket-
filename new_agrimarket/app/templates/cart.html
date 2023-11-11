@@ -1,0 +1,18 @@
+<!-- app/templates/cart.html -->
+
+<h1>Shopping Cart</h1>
+
+<ul>
+    {% for cart_item in cart_contents %}
+        <li>
+            {% if cart_item.item.__class__.__name__ == 'Product' %}
+                <strong>Product: {{ cart_item.item.name }}</strong>
+            {% elif cart_item.item.__class__.__name__ == 'Equipment' %}
+                <strong>Equipment: {{ cart_item.item.name }}</strong>
+            {% else %}
+                <strong>Unknown Item Type</strong>
+            {% endif %}
+            <p>Quantity: {{ cart_item.quantity }}</p>
+        </li>
+    {% endfor %}
+</ul>
