@@ -210,6 +210,27 @@ h2 {
 }
 
 
+/* styles.css */
+
+/* ... (existing styles) */
+
+.cart-link {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.cart-link:hover {
+    background-color: #45a049;
+}
+
+/* ... (other styles) */
+
+
 footer {
     margin-top: 30px;
     background-color: #333;
