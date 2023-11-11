@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+<!-- Inside index.html, products.html, equipment.html, and blog.html -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='images/agrimoji.jpg') }}" type="image/png">
-  <title>Agrimarket</title>
+  <title>Agrimarket - Home</title>
 </head>
+
 <body>
   <header>
     <div class="logo">
@@ -17,15 +19,12 @@
       <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
       <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
     </div>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-	<li><a href="/products">Products</a></li>
-        <li><a href="/equipment">Equipment</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/add_product">Add_Product</a></li>
-      </ul>
-    </nav>
+    	<b><h1><a href="/">Agrimarket</a></h1></b>
+        <b><a href="/">Home</a></b>
+	<b><a href="/products">Products</a></b>
+        <b><a href="/equipment">Equipment</a></b>
+        <b><a href="/blog">Blog</a></b>
+        <b><a href="/add_product">Add_Product</a></b>
     <div class="search-cart">
       <input type="text" placeholder="Search...">
       <a href="#" class="cart-icon">Cart</a>
@@ -76,11 +75,11 @@
     </div>
     <div class="footer-links">
       <ul>
-        <li><a href="/">Home</a></li>
-	<li><a href="/products">Products</a></li>
-        <li><a href="/equipment">Equipment</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="#">Contact</a></li>
+	<b><li><a href="/">Home</a></li></b>
+	<b><li><a href="/products">Products</a></li></b>
+	<b><li><a href="/equipment">Equipment</a></li></b>
+	<b><li><a href="/blog">Blog</a></li></b>
+	<b><li><a href="#">Contact</a></li></b>
       </ul>
     </div>
   </footer>

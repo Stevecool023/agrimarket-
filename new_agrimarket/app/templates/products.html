@@ -11,7 +11,14 @@
 </head>
 <body>
     <header>
-        <h1><a href="/">Agrimarket - Home</a></h1>
+	<div class="logo">
+		<!-- Header images here -->
+		<img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
+		<img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
+		<img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
+		<img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
+	</div>
+	<b><h1><a href="/">Agrimarket</a></h1></b>
 	<b><a href="{{ url_for('homepage') }}">Home</a></b>
 	<b><a href="{{ url_for('equipment') }}">Equipment</a></b>
 	<b><a href="{{ url_for('blog') }}">Blog</a></b>
@@ -263,10 +270,10 @@
     </section>
 
     <footer>
-	    <a href="{{ url_for('homepage') }}">Home</a>
-	    <a href="{{ url_for('equipment') }}">Equipment</a>
-	    <a href="{{ url_for('blog') }}">Blog</a>
-	    <a href="{{ url_for('add_product') }}">Add_Product</a>
+	    <b><li><a href="{{ url_for('homepage') }}">Home</a></li></b>
+	    <b><li><a href="{{ url_for('equipment') }}">Equipment</a></li></b>
+	    <b><li><a href="{{ url_for('blog') }}">Blog</a></li></b>
+	    <b><li><a href="{{ url_for('add_product') }}">Add_Product</a></li></b>
         <p>Contact us at info@agrimarket.com</p>
     </footer>
 </body>
