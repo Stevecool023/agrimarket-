@@ -4,9 +4,14 @@
 from app import db
 from app.models import Product
 
+# Create the flask app and ensure it uses the correct configuration.
+app = create_app()
+
 def add_product(name, description):
-    product = Product(name=name, description=description)
-    db.session.add(product)
+    with app.app_context():
+        product = Product(name=name, description=description)
+        db.session.add(product)
+        db.session.commit()
 
 # List of products to add
 products_to_add = [
@@ -63,8 +68,5 @@ equipment_to_add = [
 # Add equipment to the database
 for equipment_data in equipment_to_add:
     add_product(equipment_data["name"], equipment_data["description"])
-
-# Commit the changes
-db.session.commit()
 
 print("Products and equipment added successfully.")
