@@ -40,6 +40,8 @@ def add_to_cart(item_type, item_id):
     # Increment the quantity or set it to 1 if the item is not in the cart
     session['cart'][(item_type, item_id)] = session['cart'].get((item_type, item_id), 0) + 1
 
+    print("Session Data:", session['cart'])  # Add this line for debugging
+
     if item_type == 'product':
         return redirect(url_for('products'))
     elif item_type == 'equipment':
