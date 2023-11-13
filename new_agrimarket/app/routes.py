@@ -113,7 +113,7 @@ def add_product_to_cart():
     product_item = {'type': 'product', 'id': product_id, 'name': product_name, 'description': product_description}
 
     # Add the product item to the cart
-    session['cart'].append(product_item)
+    session['cart'][(product_item['type'], product_item['id'])] = product_item
 
     # Redirect to the products page or cart page as needed
     return redirect(url_for('main.products'))
@@ -133,7 +133,7 @@ def add_equipment_to_cart():
     equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
 
     # Add the equipment item to the cart
-    session['cart'].append(equipment_item)
+    session['cart'][(equipment_item['type'], equipment_item['id'])] = equipment_item
 
     # Redirect to the equipment page or cart page as needed
     return redirect(url_for('main.equipment'))
