@@ -143,9 +143,8 @@ def view_cart():
 
     # Fetch details for items in the cart
     for cart_item in session.get('cart', []):
-        item_type = cart_item.get('type')
-        item_id = cart_item.get('id')
-        quantity = cart_item.get('quantity')
+        item_type = cart_item['type']
+        item_id = cart_item['id']
 
         if item_type == 'product':
             item = Product.query.get(item_id)
@@ -156,6 +155,6 @@ def view_cart():
             item = None
 
         if item:
-            cart_contents.append({'item': item, 'quantity': quantity})
+            cart_contents.append({'item': item, 'quantity': cart_item.get('quantity', 1)})
 
     return render_template('cart.html', cart_contents=cart_contents)
