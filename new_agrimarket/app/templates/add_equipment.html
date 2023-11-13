@@ -1,0 +1,25 @@
+<!-- templates/add_equipment.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Equipment</title>
+</head>
+<body>
+    <h1>Add Equipment</h1>
+    
+    <!-- Your existing form for adding equipment -->
+    <form method="POST" action="{{ url_for('main.add_equipment') }}">
+        <!-- Your form fields for equipment details -->
+
+        <input type="submit" value="Add to Cart">
+    </form>
+
+    <!-- Display cart contents -->
+    <h2>Shopping Cart</h2>
+    <ul>
+        {% for item in session['cart'] %}
+            <li>{{ item.name }} - {{ item.description }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
