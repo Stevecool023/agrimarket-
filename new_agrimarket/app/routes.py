@@ -98,6 +98,24 @@ def add_to_cart(item_type, item_id):
         # Handle other item types as needed
         pass
 
+@bp.route('/add_equipment_to_cart', methods=['POST'])
+def add_equipment_to_cart():
+    equipment_name = request.form.get('equipment_name')
+    equipment_description = request.form.get('equipment_description')
+
+    # Add the equipment to the session cart
+    if 'cart' not in session:
+        session['cart'] = []
+
+    session['cart'].append({
+        'name': equipment_name,
+        'description': equipment_description,
+        # Add more details as needed
+    })
+
+    flash(f'{equipment_name} added to cart!', 'success')
+    return redirect(url_for('main.equipment'))
+
 
 @bp.route('/cart')
 def view_cart():
