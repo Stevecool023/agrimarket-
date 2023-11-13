@@ -1,6 +1,6 @@
 # app/routes.py
 
-from flask import Blueprint, render_template, session, redirect, url_for
+from flask import Blueprint, render_template, session, redirect, url_for, request
 from app.models import Product, BlogPost, Equipment, Cart
 
 bp = Blueprint('main', __name__)
@@ -99,14 +99,15 @@ def add_to_cart(item_type, item_id):
         pass
 
 
+# Route for adding products to the cart
 @bp.route('/add_product_to_cart', methods=['POST'])
 def add_product_to_cart():
     if 'cart' not in session:
         session['cart'] = []
 
     # Get product details from the form submission
-    product_name = request.form.get('product_name')
-    product_description = request.form.get('product_description')
+    product_name = request.form.get('name')  # Corrected field name
+    product_description = request.form.get('description')  # Corrected field name
 
     # Create a product item dictionary
     product_item = {'type': 'product', 'name': product_name, 'description': product_description}
@@ -124,8 +125,8 @@ def add_equipment_to_cart():
         session['cart'] = []
 
     # Get equipment details from the form submission
-    equipment_name = request.form.get('equipment_name')
-    equipment_description = request.form.get('equipment_description')
+    equipment_name = request.form.get('name')  # Corrected field name
+    equipment_description = request.form.get('description')  # Corrected field name
 
     # Create an equipment item dictionary
     equipment_item = {'type': 'equipment', 'name': equipment_name, 'description': equipment_description}
