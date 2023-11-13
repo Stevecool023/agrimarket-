@@ -1,6 +1,6 @@
 # app/routes.py
 
-from flask import Blueprint, render_template, session
+from flask import Blueprint, render_template, session, redirect, url_for
 from app.models import Product, BlogPost, Equipment, Cart
 
 bp = Blueprint('main', __name__)
@@ -29,8 +29,56 @@ def equipment():
 
 @bp.route('/add_product', methods=['GET', 'POST'])
 def add_product():
-    # Your existing code for adding products
-    pass
+    # existing code for adding products
+    if request.method == 'POST':
+        # Get form data from the request
+        name = request.form.get('name')
+        description = request.form.get('description')
+
+        # Create a dictionary to represent the product
+        product = {'name': name, 'description': description}
+
+        # Check if the 'cart' key exists in the session
+        if 'cart' not in session:
+            # If not, initialize the cart as an empty list
+            session['cart'] = []
+
+        # Add the product to the cart
+        session['cart'].append(product)
+
+        # Redirect to the products page
+        return redirect(url_for('main.products'))
+
+    # Render the add_product.html template for GET requests
+    return render_template('add_product.html')
+
+
+
+@bp.route('/add_equipment', methods=['GET', 'POST'])
+def add_equipment():
+    # code for adding equipment
+    if request.method == 'POST':
+        # Get form data from the request
+        name = request.form.get('name')
+        description = request.form.get('description')
+
+        # Create a dictionary to represent the equipment
+        equipment = {'name': name, 'description': description}
+
+        # Check if the 'cart' key exists in the session
+        if 'cart' not in session:
+            # If not, initialize the cart as an empty list
+            session['cart'] = []
+
+        # Add the equipment to the cart
+        session['cart'].append(equipment)
+
+        # Redirect to the equipment page
+        return redirect(url_for('main.equipment'))
+
+    # Render the add_equipment.htl template for GET requests
+    return render_template('add_equipment.html')
+
 
 @bp.route('/add_to_cart/<item_type>/<int:item_id>', methods=['POST'])
 def add_to_cart(item_type, item_id):

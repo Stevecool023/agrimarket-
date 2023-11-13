@@ -7,10 +7,17 @@ from app.models import Product, Equipment
 # Create the flask app and ensure it uses the correct configuration.
 app = create_app()
 
-def add_product(name, description):
+def add_item(name, description, item_type):
     with app.app_context():
-        product = Product(name=name, description=description)
-        db.session.add(product)
+        if item_type == 'product':
+            item = Product(name=name, description=description)
+        elif item_type == 'equipment':
+            item = Equipment(name=name, description=description)
+        else:
+            # Handle other item types as needed
+            return
+
+        db.session.add(item)
         db.session.commit()
 
 # List of products to add
@@ -47,7 +54,7 @@ products_to_add = [
 
 # Add products to the database
 for product_data in products_to_add:
-    add_product(product_data["name"], product_data["description"])
+    add_item(product_data["name"], product_data["description"], item_type='product')
 
 # List of equipment to add
 equipment_to_add = [
@@ -67,6 +74,6 @@ equipment_to_add = [
 
 # Add equipment to the database
 for equipment_data in equipment_to_add:
-    add_product(equipment_data["name"], equipment_data["description"])
+    add_item(equipment_data["name"], equipment_data["description"], item_type='equipment')
 
 print("Products and equipment added successfully.")
