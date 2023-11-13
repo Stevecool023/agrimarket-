@@ -143,8 +143,8 @@ def view_cart():
     cart_contents = []
 
     # Fetch details for items in the cart
-    for cart_item, quantity in session.get('cart', {}).items():
-        item_type, item_id = cart_item
+    for cart_item in session.get('cart', []):
+        item_type, item_id = cart_item['type'], cart_item['id']
 
         if item_type == 'product':
             item = Product.query.get(item_id)
@@ -155,6 +155,6 @@ def view_cart():
             item = None
 
         if item:
-            cart_contents.append({'item': item, 'quantity': quantity})
+            cart_contents.append({'item': item, 'quantity': 1})  # You may adjust quantity based on your logic
 
     return render_template('cart.html', cart_contents=cart_contents)
