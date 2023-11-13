@@ -143,7 +143,11 @@ def view_cart():
     cart_contents = []
 
     # Fetch details for items in the cart
-    for (item_type, item_id), quantity in session.get('cart', {}).items():
+    for cart_item in session.get('cart', []):
+        item_type = cart_item.get('type')
+        item_id = cart_item.get('id')
+        quantity = cart_item.get('quantity')
+
         if item_type == 'product':
             item = Product.query.get(item_id)
         elif item_type == 'equipment':
