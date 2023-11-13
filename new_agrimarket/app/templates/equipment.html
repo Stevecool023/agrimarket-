@@ -1,42 +1,103 @@
 <!DOCTYPE html>
+<!-- Inside index.html, products.html, equipment.html, and blog.html -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agrimarket - Farm Equipment</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <!-- Add your CSS links and other meta tags as needed -->
 </head>
 <body>
     <header>
-        <h1><a href="/">Agrimarket - Home</a></h1>
-        <ul>
-            <li><a href="{{ url_for('main.homepage') }}">Home</a></li>
-            <li><a href="{{ url_for('main.products') }}">Products</a></li>
-            <li><a href="{{ url_for('main.equipment') }}">Equipment</a></li>
-            <li><a href="{{ url_for('main.blog') }}">Blog</a></li>
-            <li><a href="{{ url_for('main.view_cart') }}">Cart</a></li>
-        </ul>
+        <b><h1><a href="/">Agrimarket - Home</a></h1></b>
+	<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
+	<b><a href="{{ url_for('main.products') }}">Products</a></b>
+	<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
+        <b><a href="{{ url_for('main.view_cart') }}">Cart</a></b>
     </header>
 
     <section class="farm-equipment">
         <h2>Farm Equipment</h2>
 
-        <!-- Equipment Category -->
+        <!-- First Row -->
         <div class="equipment-category">
             <h3>Equipment Category</h3>
 
-            <!-- Loop through equipment_items -->
-            {% for equipment_item in equipment_items %}
-                <div class="equipment">
-                    <img src="{{ url_for('static', filename='images/' + equipment_item.image_url) }}" alt="{{ equipment_item.name }}">
-                    <h4>{{ equipment_item.name }}</h4>
-                    <p>{{ equipment_item.description }}</p>
-                    <form method="POST" action="{{ url_for('add_to_cart', item_type='equipment', item_id=equipment_item.id) }}">
-                        <button type="submit">Add to Cart</button>
-                    </form>
-                </div>
-            {% endfor %}
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/farm machinery.jpg') }}" alt="Farm Machinery">
+                <h4>Farm Machinery</h4>
+                <p>High-quality farm machinery for efficient agricultural operations.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/farm tools.jpg') }}" alt="Farm Tools">
+                <h4>Farm Tools</h4>
+                <p>Durable and reliable farm tools for various agricultural tasks.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/panga.jpg') }}" alt="Panga">
+                <h4>Panga</h4>
+                <p>A sharp and durable panga, essential for various cutting and clearing tasks on the farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/fork&jembe.jpg') }}" alt="Fork & Jembe">
+                <h4>Fork & Jembe</h4>
+                <p>An efficient fork & jembe for lifting and turning soil in your garden or field.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/mattock.jpg') }}" alt="Mattock">
+                <h4>Mattock</h4>
+                <p>A versatile mattock for digging and chopping tasks on the farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Second Row -->
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/farm equipment.jpg') }}" alt="Farm Equipment">
+                <h4>Farm Equipment</h4>
+                <p>Essential farm equipment for various agricultural operations.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/shovel.jpg') }}" alt="Shovel">
+                <h4>Shovel</h4>
+                <p>A sturdy shovel for digging and moving soil on the farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/fruits.jpg') }}" alt="Fruits">
+                <h4>Fruits</h4>
+                <p>Specialized equipment for harvesting and handling fruits on the farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/milk.jpg') }}" alt="Milk">
+                <h4>Milk</h4>
+                <p>Equipment for milk processing and handling on the farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="equipment">
+                <img src="{{ url_for('static', filename='images/sickle.jpg') }}" alt="Sickle">
+                <h4>Sickle</h4>
+                <p>Agricultural sickle for cutting and harvesting crops.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more equipment cards as needed -->
 
         </div>
 
@@ -46,13 +107,11 @@
     </section>
 
     <footer>
-        <ul>
-            <li><a href="{{ url_for('main.homepage') }}">Home</a></li>
-            <li><a href="{{ url_for('main.products') }}">Products</a></li>
-            <li><a href="{{ url_for('main.equipment') }}">Equipment</a></li>
-            <li><a href="{{ url_for('main.blog') }}">Blog</a></li>
-            <li><a href="{{ url_for('main.view_cart') }}">Cart</a></li>
-        </ul>
+	<b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
+	<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+	<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	<b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
+	<b><li><a href="{{ url_for('main.view_cart') }}">Cart</a></li></b>
         <p>Contact us at info@agrimarket.com</p>
     </footer>
 </body>
