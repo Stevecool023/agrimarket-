@@ -125,8 +125,8 @@ def add_equipment_to_cart():
         session['cart'] = []
 
     # Get equipment details from the form submission
-    equipment_name = request.form.get('name')  # Corrected field name
-    equipment_description = request.form.get('description')  # Corrected field name
+    equipment_name = request.form.get('equipment_name')
+    equipment_description = request.form.get('equipment_description')
 
     # Create an equipment item dictionary
     equipment_item = {'type': 'equipment', 'name': equipment_name, 'description': equipment_description}
@@ -134,9 +134,8 @@ def add_equipment_to_cart():
     # Add the equipment item to the cart
     session['cart'].append(equipment_item)
 
-    # Redirect to the equipment page or cart page as needed
-    return redirect(url_for('main.equipment'))
-
+    # Redirect to the cart page
+    return redirect(url_for('main.view_cart'))
 
 @bp.route('/cart')
 def view_cart():
