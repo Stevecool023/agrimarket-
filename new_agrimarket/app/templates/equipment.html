@@ -31,6 +31,14 @@
                 <h4>Farm Machinery</h4>
                 <p>High-quality farm machinery for efficient agricultural operations.</p>
                 <a href="#" class="cart-link">Add to Cart</a>
+
+		<!-- Add to Cart form for Equipment 1 -->
+    <form method="POST" action="{{ url_for('main.add_equipment_to_cart') }}">
+        <input type="hidden" name="equipment_name" value="Farm Machinery">
+        <input type="hidden" name="equipment_description" value="High-quality farm machinery for efficient agricultural operations.">
+        <input type="submit" value="Add to Cart">
+    </form>
+
             </div>
 
             <div class="equipment">
@@ -38,6 +46,14 @@
                 <h4>Farm Tools</h4>
                 <p>Durable and reliable farm tools for various agricultural tasks.</p>
                 <a href="#" class="cart-link">Add to Cart</a>
+
+
+		<!-- Add to Cart form for Equipment 2 -->
+    		<form method="POST" action="{{ url_for('main.add_equipment_to_cart') }}">
+        <input type="hidden" name="equipment_name" value="Farm Tools">
+        <input type="hidden" name="equipment_description" value="Durable and reliable farm tools for various agricultural tasks.">
+        <input type="submit" value="Add to Cart">
+    		</form>
             </div>
 
             <div class="equipment">
