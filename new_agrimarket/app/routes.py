@@ -102,7 +102,7 @@ def add_to_cart(item_type, item_id):
 @bp.route('/add_product_to_cart', methods=['POST'])
 def add_product_to_cart():
     if 'cart' not in session:
-        session['cart'] = []
+        session['cart'] = {}
 
     # Get product details from the form submission
     product_id = request.form.get('product_id')  # Replace 'product_id' with the actual field name from your form
@@ -113,7 +113,7 @@ def add_product_to_cart():
     product_item = {'type': 'product', 'id': product_id, 'name': product_name, 'description': product_description}
 
     # Add the product item to the cart
-    session['cart'].append(product_item)
+    session['cart'][(product_item['type'], product_item['id'])] = product_item
 
     # Redirect to the products page or cart page as needed
     return redirect(url_for('main.products'))
@@ -122,7 +122,7 @@ def add_product_to_cart():
 @bp.route('/add_equipment_to_cart', methods=['POST'])
 def add_equipment_to_cart():
     if 'cart' not in session:
-        session['cart'] = []
+        session['cart'] = {}
 
     # Get equipment details from the form submission
     equipment_id = request.form.get('equipment_id')  # Replace 'equipment_id' with the actual field name from your form
@@ -133,7 +133,7 @@ def add_equipment_to_cart():
     equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
 
     # Add the equipment item to the cart
-    session['cart'].append(equipment_item)
+    session['cart'][(equipment_item['type'], equipment_item['id'])] = equipment_item
 
     # Redirect to the equipment page or cart page as needed
     return redirect(url_for('main.equipment'))
@@ -143,8 +143,8 @@ def view_cart():
     cart_contents = []
 
     # Fetch details for items in the cart
-    for cart_item in session.get('cart', []):
-        item_type, item_id = cart_item['type'], cart_item['id']
+    for cart_item, quantity in session.get('cart', {}).items():
+        item_type, item_id = cart_item
 
         if item_type == 'product':
             item = Product.query.get(item_id)
@@ -155,6 +155,6 @@ def view_cart():
             item = None
 
         if item:
-            cart_contents.append({'item': item, 'quantity': 1})  # You may adjust quantity based on your logic
+            cart_contents.append({'item': item, 'quantity': quantity})
 
     return render_template('cart.html', cart_contents=cart_contents)
