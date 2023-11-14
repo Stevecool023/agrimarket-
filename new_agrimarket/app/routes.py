@@ -150,17 +150,21 @@ def view_cart():
 
     # Fetch details for items in the cart
     for key, quantity in session.get('cart', {}).items():
-        item_type, item_id = key.split('_')  # Split the string to retrieve type and id
+        try:
+            item_type, item_id = key.split('_')  # Split the string to retrieve type and id
 
-        if item_type == 'product':
-            item = Product.query.get(item_id)
-        elif item_type == 'equipment':
-            item = Equipment.query.get(item_id)
-        else:
-            # Handle other item types as needed
-            item = None
+            if item_type == 'product':
+                item = Product.query.get(item_id)
+            elif item_type == 'equipment':
+                item = Equipment.query.get(item_id)
+            else:
+                # Handle other item types as needed
+                item = None
 
-        if item:
-            cart_contents.append({'item': item, 'quantity': quantity})
+            if item:
+                cart_contents.append({'item': item, 'quantity': quantity})
+        except ValueError:
+            # Handle cases where the key is not in the expected format
+            pass
 
     return render_template('cart.html', cart_contents=cart_contents)
