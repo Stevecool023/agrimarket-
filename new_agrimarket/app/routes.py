@@ -127,15 +127,15 @@ def add_equipment_to_cart():
         session['cart'] = {}
 
     # Get equipment details from the form submission
-    equipment_id = request.form.get('equipment_id')  # Replace 'equipment_id' with the actual field name from your form
+    equipment_id = request.form.get('equipment_id')
     equipment_name = request.form.get('equipment_name')
     equipment_description = request.form.get('equipment_description')
 
     # Create an equipment item dictionary
     equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
 
-    # Use a tuple as the key consistently
-    key = (equipment_item['type'], equipment_item['id'])
+    # Convert the tuple key into a string
+    key = f"{equipment_item['type']}_{equipment_item['id']}"
 
     # Add the equipment item to the cart
     session['cart'][key] = equipment_item
@@ -161,9 +161,5 @@ def view_cart():
 
         if item:
             cart_contents.append({'item': item, 'quantity': quantity})
-        else:
-            print(f"Item not found in the database: {item_type} - {item_id}")
-
-    print("Cart Contents:", cart_contents)  # Add this line for debugging
 
     return render_template('cart.html', cart_contents=cart_contents)
