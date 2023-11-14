@@ -163,8 +163,13 @@ def view_cart():
 
             if item:
                 cart_contents.append({'item': item, 'quantity': quantity})
+            else:
+                print(f"Item not found in the database: {item_type} - {item_id}")
         except ValueError:
             # Handle cases where the key is not in the expected format
+            print(f"Unexpected key format: {key}")
             pass
+
+    print("Cart Contents:", cart_contents)  # Add this line for debugging
 
     return render_template('cart.html', cart_contents=cart_contents)
