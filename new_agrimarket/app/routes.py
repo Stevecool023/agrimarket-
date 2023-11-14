@@ -112,8 +112,11 @@ def add_product_to_cart():
     # Create a product item dictionary
     product_item = {'type': 'product', 'id': product_id, 'name': product_name, 'description': product_description}
 
+    # Convert the tuple key into a string
+    key = f"{product_item['type']}_{product_item['id']}"
+
     # Add the product item to the cart
-    session['cart'][(product_item['type'], product_item['id'])] = product_item
+    session['cart'][key] = product_item
 
     # Redirect to the products page or cart page as needed
     return redirect(url_for('main.products'))
@@ -132,8 +135,11 @@ def add_equipment_to_cart():
     # Create an equipment item dictionary
     equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
 
+    # Convert the tuple key into a string
+    key = f"{equipment_item['type']}_{equipment_item['id']}"
+
     # Add the equipment item to the cart
-    session['cart'][(equipment_item['type'], equipment_item['id'])] = equipment_item
+    session['cart'][key] = equipment_item
 
     # Redirect to the equipment page or cart page as needed
     return redirect(url_for('main.equipment'))
@@ -143,8 +149,8 @@ def view_cart():
     cart_contents = []
 
     # Fetch details for items in the cart
-    for cart_item, quantity in session.get('cart', {}).items():
-        item_type, item_id = cart_item
+    for key, quantity in session.get('cart', {}).items():
+        item_type, item_id = key.split('_')  # Split the string to retrieve type and id
 
         if item_type == 'product':
             item = Product.query.get(item_id)
