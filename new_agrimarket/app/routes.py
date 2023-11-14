@@ -121,7 +121,6 @@ def add_product_to_cart():
     # Redirect to the products page or cart page as needed
     return redirect(url_for('main.products'))
 
-# Route for adding equipment to the cart
 @bp.route('/add_equipment_to_cart', methods=['POST'])
 def add_equipment_to_cart():
     if 'cart' not in session:
@@ -135,8 +134,8 @@ def add_equipment_to_cart():
     # Create an equipment item dictionary
     equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
 
-    # Convert the tuple key into a string
-    key = f"{equipment_item['type']}_{equipment_item['id']}"
+    # Use a tuple as the key consistently
+    key = (equipment_item['type'], equipment_item['id'])
 
     # Add the equipment item to the cart
     session['cart'][key] = equipment_item
