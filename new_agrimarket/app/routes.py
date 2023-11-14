@@ -150,25 +150,20 @@ def view_cart():
 
     # Fetch details for items in the cart
     for key, quantity in session.get('cart', {}).items():
-        try:
-            item_type, item_id = key.split('_')  # Split the string to retrieve type and id
+        item_type, item_id = key.split('_')  # Split the string to retrieve type and id
 
-            if item_type == 'product':
-                item = Product.query.get(item_id)
-            elif item_type == 'equipment':
-                item = Equipment.query.get(item_id)
-            else:
-                # Handle other item types as needed
-                item = None
+        if item_type == 'product':
+            item = Product.query.get(item_id)
+        elif item_type == 'equipment':
+            item = Equipment.query.get(item_id)
+        else:
+            # Handle other item types as needed
+            item = None
 
-            if item:
-                cart_contents.append({'item': item, 'quantity': quantity})
-            else:
-                print(f"Item not found in the database: {item_type} - {item_id}")
-        except ValueError:
-            # Handle cases where the key is not in the expected format
-            print(f"Unexpected key format: {key}")
-            pass
+        if item:
+            cart_contents.append({'item': item, 'quantity': quantity})
+        else:
+            print(f"Item not found in the database: {item_type} - {item_id}")
 
     print("Cart Contents:", cart_contents)  # Add this line for debugging
 
