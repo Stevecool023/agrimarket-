@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# add_product_equipment.py
+# add products and equipment
 
 from app import create_app, db
 from app.models import Item, Product, Equipment
@@ -9,14 +9,14 @@ app = create_app()
 def add_item(name, description, item_type, cost=None):
     with app.app_context():
         if item_type == 'product':
-            item = Product(name=name, description=description, cost=cost)
+            item = Product(name=name, description=description, cost=cost, price=cost)
         elif item_type == 'equipment':
-            item = Equipment(name=name, description=description, cost=cost)
+            item = Equipment(name=name, description=description, cost=cost, rental_price=cost)
         else:
             # Handle other item types as needed
             return
 
-
+        item.item_type = item_type # Set the item_type field
         db.session.add(item)
         db.session.commit()
 
