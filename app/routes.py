@@ -168,4 +168,7 @@ def view_cart():
 
     print(" Cart Contents:", cart_contents) # Check cart contents in the console
 
+    # Print session data for debugging
+    print("Session Data:", session.get('cart', {}))
+
     return render_template('cart.html', cart_contents=cart_contents)
