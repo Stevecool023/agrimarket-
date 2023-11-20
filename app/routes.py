@@ -28,7 +28,7 @@ def equipment():
     return render_template('equipment.html', equipment=equipment)
 
 # Update add_equipment_to_cart route
-@bp.route('/add_equipment_to_cart', methods=['POST'])
+@bp.route('/add_equipment_to_cart_route', methods=['POST'])
 def add_equipment_to_cart():
     if 'cart' not in session:
         session['cart'] = {}
@@ -51,7 +51,7 @@ def add_equipment_to_cart():
     return redirect(url_for('main.equipment'))
 
 # Update add_product_to_cart route
-@bp.route('/add_product_to_cart', methods=['POST'])
+@bp.route('/add_product_to_cart_route', methods=['POST'])
 def add_product_to_cart():
     if 'cart' not in session:
         session['cart'] = {}
@@ -72,7 +72,6 @@ def add_product_to_cart():
 
     # Redirect to the products page or cart page as needed
     return redirect(url_for('main.products'))
-
 
 @bp.route('/add_to_cart/<item_type>/<int:item_id>', methods=['POST'])
 def add_to_cart(item_type, item_id):
