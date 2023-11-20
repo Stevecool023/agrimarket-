@@ -12,8 +12,8 @@ def homepage():
 @bp.route('/products')
 def products():
     # Fetch products from the database
-    products_data = Product.query.all()
-    return render_template('products.html', products=products_data)
+    products = Product.query.all()
+    return render_template('products.html', products=products)
 
 @bp.route('/blog')
 def blog():
@@ -24,8 +24,8 @@ def blog():
 @bp.route('/equipment')
 def equipment():
     # Fetch equipment from the database
-    equipment_data = Equipment.query.all()
-    return render_template('equipment.html', equipment=equipment_data)
+    equipment = Equipment.query.all()
+    return render_template('equipment.html', equipment=equipment)
 
 @bp.route('/add_product', methods=['GET', 'POST'])
 def add_product():
