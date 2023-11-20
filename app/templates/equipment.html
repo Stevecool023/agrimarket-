@@ -34,7 +34,8 @@
     	<form method="POST" action="{{ url_for('main.add_equipment_to_cart') }}">
         	<input type="hidden" name="equipment_name" value="Farm Machinery">
         	<input type="hidden" name="equipment_description" value="High-quality farm machinery for efficient agricultural operations.">
-        	<input type="submit" value="Add to Cart">
+		<input type="hidden" name="equipment_image" value="farm_machinery.jpg">
+		<input type="submit" value="Add to Cart">
     	</form>
 		</div>
 
@@ -49,7 +50,8 @@
     		<form method="POST" action="{{ url_for('main.add_equipment_to_cart') }}">
         <input type="hidden" name="equipment_name" value="Farm Tools">
         <input type="hidden" name="equipment_description" value="Durable and reliable farm tools for various agricultural tasks.">
-        <input type="submit" value="Add to Cart">
+	<input type="hidden" name="equipment_image" value="farm_machinery.jpg">
+	<input type="submit" value="Add to Cart">
     		</form>
             </div>
 
