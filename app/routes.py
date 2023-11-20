@@ -28,7 +28,7 @@ def equipment():
     return render_template('equipment.html', equipment=equipment)
 
 # Update add_equipment_to_cart route
-@bp.route('/add_equipment_to_cart_route', methods=['POST'])
+@bp.route('/add_equipment_to_cart', methods=['POST'])
 def add_equipment_to_cart():
     if 'cart' not in session:
         session['cart'] = {}
@@ -51,7 +51,7 @@ def add_equipment_to_cart():
     return redirect(url_for('main.equipment'))
 
 # Update add_product_to_cart route
-@bp.route('/add_product_to_cart_route', methods=['POST'])
+@bp.route('/add_product_to_cart', methods=['POST'])
 def add_product_to_cart():
     if 'cart' not in session:
         session['cart'] = {}
@@ -90,51 +90,6 @@ def add_to_cart(item_type, item_id):
     else:
         # Handle other item types as needed
         pass
-
-# Route for adding products to the cart
-@bp.route('/add_product_to_cart', methods=['POST'])
-def add_product_to_cart():
-    if 'cart' not in session:
-        session['cart'] = {}
-
-    # Get product details from the form submission
-    product_id = request.form.get('product_id')  # Replace 'product_id' with the actual field name from your form
-    product_name = request.form.get('product_name')
-    product_description = request.form.get('product_description')
-
-    # Create a product item dictionary
-    product_item = {'type': 'product', 'id': product_id, 'name': product_name, 'description': product_description}
-
-    # Convert the tuple key into a string
-    key = f"{product_item['type']}_{product_item['id']}"
-
-    # Add the product item to the cart
-    session['cart'][key] = product_item
-
-    # Redirect to the products page or cart page as needed
-    return redirect(url_for('main.products'))
-
-@bp.route('/add_equipment_to_cart', methods=['POST'])
-def add_equipment_to_cart():
-    if 'cart' not in session:
-        session['cart'] = {}
-
-    # Get equipment details from the form submission
-    equipment_id = request.form.get('equipment_id')
-    equipment_name = request.form.get('equipment_name')
-    equipment_description = request.form.get('equipment_description')
-
-    # Create an equipment item dictionary
-    equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
-
-    # Convert the tuple key into a string
-    key = f"{equipment_item['type']}_{equipment_item['id']}"
-
-    # Add the equipment item to the cart
-    session['cart'][key] = equipment_item
-
-    # Redirect to the equipment page or cart page as needed
-    return redirect(url_for('main.equipment'))
 
 @bp.route('/cart')
 def view_cart():
