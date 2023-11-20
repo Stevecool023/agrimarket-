@@ -15,11 +15,9 @@ class Item(db.Model):
 
 class Product(Item):
     __tablename__ = 'product'
-    price = db.Column(db.Float, nullable=False)
 
 class Equipment(Item):
     __tablename__ = 'equipment'
-    rental_price = db.Column(db.Float)  # Add any specific fields needed for Equipment
 
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
