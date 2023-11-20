@@ -4,19 +4,22 @@ from app import db
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
-class Product(db.Model):
+class Item(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
     image_url = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    item_type = db.Column(db.String(50), nullable=False)  # 'product' or 'equipment'
+    cost = db.Column(db.Float)
 
-class Equipment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.String(255))
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+class Product(Item):
+    __tablename__ = 'product'
+    price = db.Column(db.Float, nullable=False)
+
+class Equipment(Item):
+    __tablename__ = 'equipment'
+    rental_price = db.Column(db.Float)  # Add any specific fields needed for Equipment
 
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
