@@ -35,10 +35,10 @@
 		    <p>Image Filename: {{ cart_item.image_filename }}</p> <!-- line for debugging -->
             	    {% if cart_item.item.__class__.__name__ == 'Product' %}
               		<strong>Product: {{ cart_item.item.name }}</strong>
-			<img src="{{ url_for('static', filename=cart_item.image_filename) }}" alt="{{ cart_item.item.name }}">
+			<img src="{{ url_for('static', filename=cart_item.item.image_filename) }}" alt="{{ cart_item.item.name }}">
             	    {% elif cart_item.item.__class__.__name__ == 'Equipment' %}
                 	<strong>Equipment: {{ cart_item.item.name }}</strong>
-			<img src="{{ url_for('static', filename=cart_item.image_filename) }}" alt="{{ cart_item.item.name }}">
+			<img src="{{ url_for('static', filename=cart_item.item.image_filename) }}" alt="{{ cart_item.item.name }}">
             	    {% else %}
                 	<strong>Unknown Item Type</strong>
             	    {% endif %}
