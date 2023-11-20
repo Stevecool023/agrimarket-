@@ -2,13 +2,21 @@
 # add_product_equipment.py
 
 from app import create_app, db
-from app.models import Item
+from app.models import Item, Product, Equipment
 
 app = create_app()
 
 def add_item(name, description, item_type, cost=None):
     with app.app_context():
-        item = Item(name=name, description=description, item_type=item_type, cost=cost)
+        if item_type == 'product':
+            item = Product(name=name, description=description, cost=cost)
+        elif item_type == 'equipment':
+            item = Equipment(name=name, description=description, cost=cost)
+        else:
+            # Handle other item types as needed
+            return
+
+
         db.session.add(item)
         db.session.commit()
 
