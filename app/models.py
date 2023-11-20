@@ -5,6 +5,7 @@ from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
 
 class Item(db.Model):
+    __tablename__= 'item'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -13,11 +14,30 @@ class Item(db.Model):
     item_type = db.Column(db.String(50), nullable=False)  # 'product' or 'equipment'
     cost = db.Column(db.Float)
 
+    __mapper_args__ = {
+            'polymorphic_identity': 'item',
+            'polymorphic_on': item_type
+    }
+
 class Product(Item):
     __tablename__ = 'product'
+    id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
+    code = db.Column(db.String(255), nullable=False, unique=True)
+    image_url = db.Column(db.Text, nullable=False)
+
+    __mapper_args__ = {
+            'polymorphic_identity': 'product',
+    }
 
 class Equipment(Item):
     __tablename__ = 'equipment'
+    id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
+    code = db.Column(db.String(255), nullable=False, unique=True)
+    image_url = db.Column(db.Text, nullable=False)
+
+    __mapper_args__ = {
+            'polymorphic_identity': 'equipment',
+    }
 
 class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
