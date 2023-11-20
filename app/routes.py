@@ -27,57 +27,51 @@ def equipment():
     equipment = Equipment.query.all()
     return render_template('equipment.html', equipment=equipment)
 
-@bp.route('/add_product', methods=['GET', 'POST'])
-def add_product():
-    # existing code for adding products
-    if request.method == 'POST':
-        # Get form data from the request
-        name = request.form.get('name')
-        description = request.form.get('description')
+# Update add_equipment_to_cart route
+@bp.route('/add_equipment_to_cart', methods=['POST'])
+def add_equipment_to_cart():
+    if 'cart' not in session:
+        session['cart'] = {}
 
-        # Create a dictionary to represent the product
-        product = {'name': name, 'description': description}
+    # Get equipment details from the form submission
+    equipment_id = request.form.get('equipment_id')
+    equipment_name = request.form.get('equipment_name')
+    equipment_description = request.form.get('equipment_description')
 
-        # Check if the 'cart' key exists in the session
-        if 'cart' not in session:
-            # If not, initialize the cart as an empty list
-            session['cart'] = []
+    # Create an equipment item dictionary
+    equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
 
-        # Add the product to the cart
-        session['cart'].append(product)
+    # Convert the key into a string
+    key = f"{equipment_item['type']}_{equipment_item['id']}"
 
-        # Redirect to the products page
-        return redirect(url_for('main.products'))
+    # Add the equipment item to the cart
+    session['cart'][key] = equipment_item
 
-    # Render the add_product.html template for GET requests
-    return render_template('add_product.html')
+    # Redirect to the equipment page or cart page as needed
+    return redirect(url_for('main.equipment'))
 
+# Update add_product_to_cart route
+@bp.route('/add_product_to_cart', methods=['POST'])
+def add_product_to_cart():
+    if 'cart' not in session:
+        session['cart'] = {}
 
+    # Get product details from the form submission
+    product_id = request.form.get('product_id')
+    product_name = request.form.get('product_name')
+    product_description = request.form.get('product_description')
 
-@bp.route('/add_equipment', methods=['GET', 'POST'])
-def add_equipment():
-    # code for adding equipment
-    if request.method == 'POST':
-        # Get form data from the request
-        name = request.form.get('name')
-        description = request.form.get('description')
+    # Create a product item dictionary
+    product_item = {'type': 'product', 'id': product_id, 'name': product_name, 'description': product_description}
 
-        # Create a dictionary to represent the equipment
-        equipment = {'name': name, 'description': description}
+    # Convert the key into a string
+    key = f"{product_item['type']}_{product_item['id']}"
 
-        # Check if the 'cart' key exists in the session
-        if 'cart' not in session:
-            # If not, initialize the cart as an empty list
-            session['cart'] = []
+    # Add the product item to the cart
+    session['cart'][key] = product_item
 
-        # Add the equipment to the cart
-        session['cart'].append(equipment)
-
-        # Redirect to the equipment page
-        return redirect(url_for('main.equipment'))
-
-    # Render the add_equipment.htl template for GET requests
-    return render_template('add_equipment.html')
+    # Redirect to the products page or cart page as needed
+    return redirect(url_for('main.products'))
 
 
 @bp.route('/add_to_cart/<item_type>/<int:item_id>', methods=['POST'])
