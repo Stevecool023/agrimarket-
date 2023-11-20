@@ -1,0 +1,16 @@
+<!-- Loop through equipment from the database -->
+{% for equipment_item in equipment %}
+    <div class="equipment">
+        <img src="{{ url_for('static', filename='images/' + equipment_item.image_filename) }}" alt="{{ equipment_item.name }}">
+        <h4>{{ equipment_item.name }}</h4>
+        <p>{{ equipment_item.description }}</p>
+        <p>Cost: ${{ equipment_item.cost }}</p>
+        <!-- Add to Cart form for Equipment -->
+        <form method="POST" action="{{ url_for('main.add_equipment_to_cart') }}">
+            <input type="hidden" name="equipment_name" value="{{ equipment_item.name }}">
+            <input type="hidden" name="equipment_description" value="{{ equipment_item.description }}">
+            <input type="hidden" name="equipment_image" value="{{ equipment_item.image_filename }}">
+            <input type="submit" value="Add to Cart">
+        </form>
+    </div>
+{% endfor %}
