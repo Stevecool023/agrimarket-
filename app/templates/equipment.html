@@ -1,7 +1,12 @@
 <!-- Loop through equipment from the database -->
 {% for equipment_item in equipment %}
     <div class="equipment">
-        <img src="{{ url_for('static', filename='images/' + equipment_item.image_url) }}" alt="{{ equipment_item.name }}">
+        {% if equipment_item.image_url %}
+            <img src="{{ url_for('static', filename='images/' + equipment_item.image_url) }}" alt="{{ equipment_item.name }}">
+        {% else %}
+            <!-- Add a placeholder image or handle missing image case -->
+            <img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Placeholder">
+        {% endif %}
         <h4>{{ equipment_item.name }}</h4>
         <p>{{ equipment_item.description }}</p>
         <p>Cost: ${{ equipment_item.cost }}</p>
