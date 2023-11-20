@@ -38,7 +38,7 @@
             <img src="{{ url_for('static', filename=equipment_item.image_url) }}" alt="{{ equipment_item.name }}">
         {% else %}
             <!-- Add a placeholder image or handle missing image case -->
-            <img src="{{ url_for('static', filename=agrimoji.jpg) }}" alt="Placeholder">
+            <img src="{{ url_for('static', filename='agrimoji.jpg') }}" alt="Placeholder">
         {% endif %}
         <h4>{{ equipment_item.name }}</h4>
         <p>{{ equipment_item.description }}</p>
