@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!-- Inside index.html, products.html, equipment.html, and blog.html -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrimarket - Farm Products</title>
+    <!-- Add your CSS links and other meta tags as needed -->
+</head>
+<body>
+    <header>
+	<div class="logo">
+		<!-- Header images here -->
+		<img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
+		<img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
+		<img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
+		<img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
+	</div>
+	<b><h1><a href="/">Agrimarket</a></h1></b>
+	<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
+	<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+	<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
+	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
+	<b><a href="{{ url_for('main.view_cart') }}">Cart</a></b>
+        <!-- Add navigation links, search box, etc. -->
+    </header>
+
+    <section class="farm-products">
+        <h2>Farm Products</h2>
+
+        <!-- Crop Products -->
+        <div class="product-category">
+            
+            <!-- First Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/cowbest.jpg') }}" alt="Cow Best">
+                <h4>Cow Best</h4>
+                <p>High-quality cow products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/sheep.jpg') }}" alt="Sheep">
+                <h4>Sheep</h4>
+                <p>Healthy and well-cared-for sheep for various farming purposes.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/Freshian.jpg') }}" alt="Freshian">
+                <h4>Freshian</h4>
+                <p>Fresh and high-quality Freshian products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/cowy.jpg') }}" alt="Cowy">
+                <h4>Cowy</h4>
+                <p>Top-notch cowy products for your agricultural needs.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/eggs.jpg') }}" alt="Eggs">
+                <h4>Eggs</h4>
+                <p>Fresh and organic eggs from free-range hens, high in protein and nutrients.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Second Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/fruity.jpg') }}" alt="Fruity">
+                <h4>Fruity</h4>
+                <p>Delicious and fresh fruits for a healthy diet.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/milky.jpg') }}" alt="Milky">
+                <h4>Milky</h4>
+                <p>Rich and creamy milk from grass-fed cows, perfect for your daily consumption.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Third Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/eggssss.jpg') }}" alt="Eggssss">
+                <h4>Eggssss</h4>
+                <p>Fresh and organic eggs for various culinary uses.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/goatly.jpg') }}" alt="Goatly">
+                <h4>Goatly</h4>
+                <p>High-quality goat products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Fourth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/ndama.jpg') }}" alt="Ndama">
+                <h4>Ndama</h4>
+                <p>Healthy and well-bred Ndama products for various farming purposes.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/sweetpotatoes.jpg') }}" alt="Sweet Potatoes">
+                <h4>Sweet Potatoes</h4>
+                <p>Fresh and organic sweet potatoes, ideal for various culinary uses.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Fifth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/goaty.jpg') }}" alt="Goaty">
+                <h4>Goaty</h4>
+                <p>Top-notch goaty products for your agricultural needs.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/onions.jpg') }}" alt="Onions">
+                <h4>Onions</h4>
+                <p>Fresh and organic onions, perfect for various culinary uses.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Sixth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/veg&fruits.jpg') }}" alt="Vegetables & Fruits">
+                <h4>Vegetables & Fruits</h4>
+                <p>Assorted vegetables and fruits for a healthy and balanced diet.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/vegetables&fruits.jpg') }}" alt="Vegetables & Fruits">
+                <h4>Vegetables & Fruits</h4>
+                <p>Assorted vegetables and fruits for a healthy and balanced diet.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Seventh Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/beansspecies.jpg') }}" alt="Beans Species">
+                <h4>Beans Species</h4>
+                <p>Various species of beans for different culinary uses.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/hen (1).jpg') }}" alt="Hen">
+                <h4>Hen</h4>
+                <p>Quality hen products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Eighth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/pig&lets.jpg') }}" alt="Pig & Lets">
+                <h4>Pig & Lets</h4>
+                <p>High-quality pig and piglet products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/yummy yums.jpg') }}" alt="Yummy Yums">
+                <h4>Yummy Yums</h4>
+                <p>Delicious and tasty products for your culinary delights.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Ninth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/hen.jpg') }}" alt="Hen">
+                <h4>Hen</h4>
+                <p>Quality hen products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/piggy.jpg') }}" alt="Piggy">
+                <h4>Piggy</h4>
+                <p>Adorable piggy products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Tenth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/cerially.jpg') }}" alt="Cerially">
+                <h4>Cerially</h4>
+                <p>Delicious cereals for your breakfast and snacks.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/farmchems.jpg') }}" alt="Farm Chems">
+                <h4>Farm Chems</h4>
+                <p>Quality farm chemicals for enhanced agricultural productivity.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Eleventh Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/horsy.jpg') }}" alt="Horsy">
+                <h4>Horsy</h4>
+                <p>Top-notch horsy products for your agricultural needs.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/pigsy.jpg') }}" alt="Pigsy">
+                <h4>Pigsy</h4>
+                <p>Quality pigsy products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Twelfth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/chicken.jpg') }}" alt="Chicken">
+                <h4>Chicken</h4>
+                <p>Delicious and healthy chicken products for your farm.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/maize.jpg') }}" alt="Maize">
+                <h4>Maize</h4>
+                <p>Quality maize products for various culinary uses.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+            <!-- Thirteenth Row of Crop Products -->
+            <div class="product">
+                <img src="{{ url_for('static', filename='images/potatoes.jpg') }}" alt="Potatoes">
+                <h4>Potatoes</h4>
+                <p>Fresh and organic potatoes grown with care. Ideal for various culinary uses.</p>
+                <a href="#" class="cart-link">Add to Cart</a>
+            </div>
+
+            <!-- Add more crop products as needed -->
+
+        </div>
+    </section>
+
+    <footer>
+	    <b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
+	    <b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+	    <b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	    <b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
+	    <b><li><a href="{{ url_for('main.view_cart') }}">Cart</a></li></b>
+        <p>Contact us at info@agrimarket.com</p>
+    </footer>
+</body>
+</html>
