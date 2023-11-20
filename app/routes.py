@@ -160,6 +160,10 @@ def view_cart():
             item = None
 
         if item:
-            cart_contents.append({'item': item, 'quantity': quantity})
+            cart_contents.append({
+                'item': item,
+                'quantity': quantity,
+                'image_filename': request.form.get('equipment_image')
+            })
 
     return render_template('cart.html', cart_contents=cart_contents)
