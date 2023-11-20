@@ -24,6 +24,7 @@ class Product(Item):
     id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
     code = db.Column(db.String(255), nullable=False, unique=True)
     image_url = db.Column(db.Text, nullable=False)
+    image_filename = db.Column(db.String(255), nullable=True)
 
     __mapper_args__ = {
             'polymorphic_identity': 'product',
@@ -34,6 +35,7 @@ class Equipment(Item):
     id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
     code = db.Column(db.String(255), nullable=False, unique=True)
     image_url = db.Column(db.Text, nullable=False)
+    image_filename = db.Column(db.String(255), nullable=True)
 
     __mapper_args__ = {
             'polymorphic_identity': 'equipment',
