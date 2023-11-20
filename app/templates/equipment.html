@@ -1,7 +1,7 @@
 <!-- Loop through equipment from the database -->
 {% for equipment_item in equipment %}
     <div class="equipment">
-        <img src="{{ url_for('static', filename='images/' + equipment_item.image_url|url_encode) }}" alt="{{ equipment_item.name }}">
+        <img src="{{ url_for('static', filename='images/' + equipment_item.image_url) }}" alt="{{ equipment_item.name }}">
         <h4>{{ equipment_item.name }}</h4>
         <p>{{ equipment_item.description }}</p>
         <p>Cost: ${{ equipment_item.cost }}</p>
