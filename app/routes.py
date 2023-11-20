@@ -163,7 +163,9 @@ def view_cart():
             cart_contents.append({
                 'item': item,
                 'quantity': quantity,
-                'image_filename': request.form.get('equipment_image')
+                'image_filename': request.form.get('equipment_image') # Get image filename from the form
             })
+
+    print(" Cart Contents:", cart_contents) # Check cart contents in the console
 
     return render_template('cart.html', cart_contents=cart_contents)
