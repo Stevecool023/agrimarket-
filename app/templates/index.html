@@ -24,10 +24,9 @@
 	<b><a href="{{ url_for('main.products') }}">Products</a></b>
 	<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
 	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
-	<b><a href="{{ url_for('main.view_cart') }}">Cart</a></b>
     <div class="search-cart">
       <input type="text" placeholder="Search...">
-      <a href="#" class="cart-icon">Cart</a>
+      <a href="{{ url_for('main.view_cart') }}" class="cart-icon">Cart</a>
     </div>
   </header>
 
