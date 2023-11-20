@@ -45,6 +45,7 @@
         <p>Cost: ${{ equipment_item.cost }}</p>
         <!-- Add to Cart form for Equipment -->
         <form method="POST" action="{{ url_for('main.add_equipment_to_cart') }}">
+	    <input type="hidden" name="equipment_id" value="{{ equipment_item.id }}">
             <input type="hidden" name="equipment_name" value="{{ equipment_item.name }}">
             <input type="hidden" name="equipment_description" value="{{ equipment_item.description }}">
             <input type="hidden" name="equipment_image" value="{{ equipment_item.image_url }}">
