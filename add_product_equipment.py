@@ -9,9 +9,9 @@ app = create_app()
 def add_item(name, description, item_type, cost=None):
     with app.app_context():
         if item_type == 'product':
-            item = Product(name=name, description=description, cost=cost, price=cost)
+            item = Product(name=name, description=description, cost=cost)
         elif item_type == 'equipment':
-            item = Equipment(name=name, description=description, cost=cost, rental_price=cost)
+            item = Equipment(name=name, description=description, cost=cost)
         else:
             # Handle other item types as needed
             return
