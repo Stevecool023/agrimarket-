@@ -1,0 +1,55 @@
+<!-- app/templates/cart.html -->
+<!DOCTYPE html>
+<!-- Inside index.html, products.html, equipment.html, and blog.html -->
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Agrimarket - Farm Products</title>
+	<!-- Add your CSS links and other meta tags as needed -->
+</head>
+
+<body>
+	<header>
+		<div class="logo">
+			<!-- Header images here -->
+			<img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
+			<img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
+			<img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
+			<img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
+		</div>
+		<b><h1><a href="/">Agrimarket</a></h1></b>
+		<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
+		<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+		<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
+		<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
+		<b><a href="{{ url_for('main.view_cart') }}">Cart</a></b>
+		<!-- Add navigation links, search box, etc. -->
+	</header>
+	<ul>
+    	    {% for cart_item in cart_contents %}
+        	<li>
+            	    {% if cart_item.item.__class__.__name__ == 'Product' %}
+              		<strong>Product: {{ cart_item.item.name }}</strong>
+            	    {% elif cart_item.item.__class__.__name__ == 'Equipment' %}
+                	<strong>Equipment: {{ cart_item.item.name }}</strong>
+            	    {% else %}
+                	<strong>Unknown Item Type</strong>
+            	    {% endif %}
+            	    <p>Quantity: {{ cart_item.quantity }}</p>
+            	</li>
+    	    {% endfor %}
+	</ul>
+
+	<footer>
+		<b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
+		<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
+		<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+		<b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
+		<b><li><a href="{{ url_for('main.view_cart') }}">Cart</a></li></b>
+		<p>Contact us at info@agrimarket.com</p>
+	</footer>
+</body>
+</html>
