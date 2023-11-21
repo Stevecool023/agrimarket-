@@ -3,6 +3,7 @@
 from app import db
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Column, Float, text
 
 class Item(db.Model):
     __tablename__= 'item'
@@ -25,6 +26,7 @@ class Product(Item):
     code = db.Column(db.String(255), nullable=False, unique=True)
     image_url = db.Column(db.Text, nullable=False)
     image_filename = db.Column(db.String(255), nullable=True)
+    price = Column(Float, default=0.0, server_default=text('0.0'), nullable=False)
 
     __mapper_args__ = {
             'polymorphic_identity': 'product',
@@ -36,6 +38,7 @@ class Equipment(Item):
     code = db.Column(db.String(255), nullable=False, unique=True)
     image_url = db.Column(db.Text, nullable=False)
     image_filename = db.Column(db.String(255), nullable=True)
+    price = Column(Float, default=0.0, server_default=text('0.0'), nullable=False)
 
     __mapper_args__ = {
             'polymorphic_identity': 'equipment',

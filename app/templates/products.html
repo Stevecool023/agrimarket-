@@ -43,12 +43,15 @@
         <h4>{{ product_item.name }}</h4>
         <p>{{ product_item.description }}</p>
         <p>Cost: ${{ product_item.cost }}</p>
+
         <!-- Add to Cart form for Products -->
         <form method="POST" action="{{ url_for('main.add_product_to_cart') }}">
-            <input type="hidden" name="product_id" value="{{ product_item.id }}">
+	    <input type="hidden" name="code" value="{{ product_item.code }}">
+	    <input type="number" name="quantity" value="1" min="1">
+	    <input type="hidden" name="product_id" value="{{ product_item.id }}">
 	    <input type="hidden" name="product_name" value="{{ product_item.name }}">
             <input type="hidden" name="product_description" value="{{ product_item.description }}">
-            <input type="hidden" name="product_image" value="{{ product_item.image_filename }}">
+            <input type="hidden" name="product_image" value="{{ product_item.image_filename|default(None) }}">
             <input type="submit" value="Add to Cart">
         </form>
     </div>

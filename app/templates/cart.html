@@ -36,7 +36,7 @@
             <p>{{ cart_item.item.description }}</p>
 
             {% if cart_item.item.image_filename %}
-                <img src="{{ url_for('static', filename=cart_item.item.image) }}" alt="{{ cart_item.item.name }}">
+                <img src="{{ url_for('static', filename=cart_item.item.image_filename) }}" alt="{{ cart_item.item.name }}">
             {% else %}
                 <p>No image available</p>
             {% endif %}
