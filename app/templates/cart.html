@@ -27,25 +27,27 @@
 		<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
 		<b><a href="{{ url_for('main.view_cart') }}">Cart</a></b>
 		<!-- Add navigation links, search box, etc. -->
+
 	</header>
-	<ul>
-    	    {% for cart_item in cart_contents %}
-        	<li>
-		    <p>Item Name: {{ cart_item.item.name }}</p> <!-- for debugging -->
-		    <p>Image Filename: {{ cart_item.image_filename }}</p> <!-- line for debugging -->
-            	    {% if cart_item.item.__class__.__name__ == 'Product' %}
-              		<strong>Product: {{ cart_item.item.name }}</strong>
-			<img src="{{ url_for('static', filename=cart_item.image_filename) }}" alt="{{ cart_item.item.name }}">
-            	    {% elif cart_item.item.__class__.__name__ == 'Equipment' %}
-                	<strong>Equipment: {{ cart_item.item.name }}</strong>
-			<img src="{{ url_for('static', filename=cart_item.image_filename) }}" alt="{{ cart_item.item.name }}">
-            	    {% else %}
-                	<strong>Unknown Item Type</strong>
-            	    {% endif %}
-            	    <p>Quantity: {{ cart_item.quantity }}</p>
-            	</li>
-    	    {% endfor %}
-	</ul>
+
+	{% for cart_item in cart_contents %}
+        <div>
+            <h2>{{ cart_item.item.name }}</h2>
+            <p>{{ cart_item.item.description }}</p>
+
+            {% if cart_item.image_filename %}
+                <img src="{{ url_for('static', filename=cart_item.image_filename) }}" alt="{{ cart_item.item.name }}">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+
+            <p>Quantity: {{ cart_item.quantity }}</p>
+        </div>
+        <hr>
+    {% endfor %}
+
+    <a href="{{ url_for('main.products') }}">Continue Shopping</a>
+
 
 	<footer>
 		<b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
