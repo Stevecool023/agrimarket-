@@ -38,8 +38,17 @@ def add_equipment_to_cart():
     equipment_name = request.form.get('equipment_name')
     equipment_description = request.form.get('equipment_description')
 
+    # Fetch the equipment item from the database
+    equipment = Equipment.query.get(equipment_id)
+
     # Create an equipment item dictionary
-    equipment_item = {'type': 'equipment', 'id': equipment_id, 'name': equipment_name, 'description': equipment_description}
+    equipment_item = {
+        'type': 'equipment',
+        'id': equipment_id,
+        'name': equipment_name,
+        'description': equipment_description,
+        'image_filename': getattr(equipment, 'image_filename', None)  # Set image filename
+    }
 
     # Convert the key into a string
     key = f"{equipment_item['type']}_{equipment_item['id']}"
@@ -61,8 +70,17 @@ def add_product_to_cart():
     product_name = request.form.get('product_name')
     product_description = request.form.get('product_description')
 
+    # Fetch the product item from the database
+    product = Product.query.get(product_id)
+
     # Create a product item dictionary
-    product_item = {'type': 'product', 'id': product_id, 'name': product_name, 'description': product_description}
+    product_item = {
+        'type': 'product',
+        'id': product_id,
+        'name': product_name,
+        'description': product_description,
+        'image_filename': getattr(product, 'image_filename', None)  # Set image filename
+    }
 
     # Convert the key into a string
     key = f"{product_item['type']}_{product_item['id']}"
@@ -72,37 +90,6 @@ def add_product_to_cart():
 
     # Redirect to the products page or cart page as needed
     return redirect(url_for('main.products'))
-
-@bp.route('/add_to_cart/<item_type>/<int:item_id>', methods=['POST'])
-def add_to_cart(item_type, item_id):
-    # Ensure the 'cart' key exists in the session
-    session.setdefault('cart', {})
-
-    # Increment the quantity or set it to 1 if the item is not in the cart
-    session['cart'][(item_type, item_id)] = session['cart'].get((item_type, item_id), 0) + 1
-
-    print("Session Data:", session['cart'])  # Add this line for debugging
-
-    # Fetch the item from the database
-    if item_type == 'product':
-        item = Product.query.get(item_id)
-    elif item_type == 'equipment':
-        item = Equipment.query.get(item_id)
-    else:
-        # Handle other item types as needed
-        item = None
-
-    # Set the image_filename attribute in the cart based on the fetched item
-    if item:
-        session['cart'][(item_type, item_id)]['image_filename'] = getattr(item, 'image_filename', None)
-
-    if item_type == 'product':
-        return redirect(url_for('main.products'))
-    elif item_type == 'equipment':
-        return redirect(url_for('main.equipment'))
-    else:
-        # Handle other item types as needed
-        pass
 
 @bp.route('/cart')
 def view_cart():
