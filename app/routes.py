@@ -74,6 +74,7 @@ def add_product_to_cart():
             return 'Error while adding item to cart'
     except Exception as e:
         print(e)
+        return 'Error while adding item to cart'
 
 @bp.route('/equipment')
 def equipment():
@@ -140,6 +141,7 @@ def add_equipment_to_cart():
             return 'Error while adding item to cart'
     except Exception as e:
         print(e)
+        return 'Error while adding item to cart'
 
 @bp.route('/blog')
 def blog():
