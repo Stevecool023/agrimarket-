@@ -83,10 +83,23 @@ def add_to_cart(item_type, item_id):
 
     print("Session Data:", session['cart'])  # Add this line for debugging
 
+    # Fetch the item from the database
     if item_type == 'product':
-        return redirect(url_for('products'))
+        item = Product.query.get(item_id)
     elif item_type == 'equipment':
-        return redirect(url_for('equipment'))
+        item = Equipment.query.get(item_id)
+    else:
+        # Handle other item types as needed
+        item = None
+
+    # Set the image_filename attribute in the cart based on the fetched item
+    if item:
+        session['cart'][(item_type, item_id)]['image_filename'] = getattr(item, 'image_filename', None)
+
+    if item_type == 'product':
+        return redirect(url_for('main.products'))
+    elif item_type == 'equipment':
+        return redirect(url_for('main.equipment'))
     else:
         # Handle other item types as needed
         pass
