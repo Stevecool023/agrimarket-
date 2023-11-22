@@ -19,9 +19,9 @@
       <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
       <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
     </div>
-        <b><h1><a href="/">Agrimarket</a></h1></b>
-        <b><a href="{{ url_for('main.index') }}">Home</a></b>
-        <b><a href="{{ url_for('main.blog') }}">Blog</a></b>
+    <b><h1><a href="/">Agrimarket</a></h1></b>
+    <b><a href="{{ url_for('main.index') }}">Home</a></b>
+    <b><a href="{{ url_for('main.blog') }}">Blog</a></b>
     <div class="search-cart">
       <input type="text" placeholder="Search...">
       <a href="{{ url_for('main.view_cart') }}" class="cart-icon">Cart</a>
@@ -37,47 +37,16 @@
       <p class="branding-text colored">Your number 1 home for agri-solutions.</p>
       <p class="branding-text">Your gateway to a thriving farming experience.</p>
 
-      <!-- Example Product Cards (replace with actual image filenames and descriptions) -->
-      <article class="product-card">
-        <img src="{{ url_for('static', filename='images/beansspecies.jpg') }}" alt="Beans Species">
-        <h3>Beans Species</h3>
-        <p>Discover the finest beans species for your farm.</p>
-        <button>Add to Cart</button>
-      </article>
-
-      <article class="product-card">
-        <img src="{{ url_for('static', filename='images/cerialistic.jpg') }}" alt="Cerialistic">
-        <h3>Cerialistic</h3>
-        <p>Explore the latest cerialistic products in the market.</p>
-        <button>Add to Cart</button>
-      </article>
-      <!-- Repeat for other products -->
-    </section>
-  </div>
-
-  <div class="container">
-    <h2>Welcome to AgriMarket!</h2>
-    <p>Explore our products and equipment for your farm.</p>
-
-    <div class="row">
+      <!-- Product Cards generated dynamically from Flask route -->
       {% for product in products %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ url_for('static', filename='images/' + product.image_url) }}" preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-            <div class="card-body">
-              <h3>{{ product.name }}</h3>
-              <p class="card-text">{{ product.description }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View Details</button>
-                </div>
-                <small class="text-muted">${{ product.cost }}</small>
-              </div>
-            </div>
-          </div>
-        </div>
+        <article class="product-card">
+          <img src="{{ url_for('static', filename='images/' + product.image_url) }}" alt="{{ product.name }}">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description }}</p>
+          <button>Add to Cart</button>
+        </article>
       {% endfor %}
-    </div>
+    </section>
   </div>
 
   <!-- New Images at the bottom -->
