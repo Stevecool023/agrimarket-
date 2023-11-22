@@ -16,7 +16,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'agrimarket.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    db.init_app(app)
     migrate = Migrate(app, db)
 
     login_manager = LoginManager(app)
@@ -32,7 +31,6 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    # Call init_app here
-    db.init_app(app)
+    # Remove the redundant db.init_app(app) call here
 
     return app, db
