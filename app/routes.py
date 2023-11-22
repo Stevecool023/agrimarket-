@@ -2,7 +2,7 @@
 
 from flask import Blueprint, render_template, session, redirect, url_for, request
 from app.models import Product, BlogPost, Equipment, Cart
-
+from app import db
 bp = Blueprint('main', __name__)
 
 @bp.route('/')
@@ -27,7 +27,7 @@ def blog():
     blog_data = BlogPost.query.all()
     return render_template('blog.html', blog=blog_data)
 
-@main_bp.route('/add_product_to_cart', methods=['POST'])
+@bp.route('/add_product_to_cart', methods=['POST'])
 def add_product_to_cart():
     product_code = request.form.get('code')
     quantity = int(request.form.get('quantity', 1))
@@ -50,7 +50,7 @@ def add_product_to_cart():
     # Handle the case where the product is not found
     return render_template('error.html', error_message='Product not found')
 
-@main_bp.route('/add_equipment_to_cart', methods=['POST'])
+@bp.route('/add_equipment_to_cart', methods=['POST'])
 def add_equipment_to_cart():
     equipment_code = request.form.get('code')
     quantity = int(request.form.get('quantity', 1))
@@ -101,6 +101,7 @@ def view_cart():
         else:
             # Handle the case where the item is not found (deleted, etc.)
             # You may want to remove it from the session or display a message
+            pass # Placeholder pass statement.
 
     print(" Cart Contents:", cart_contents)  # Check cart contents in the console
 
