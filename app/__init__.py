@@ -7,14 +7,14 @@ from flask_migrate import Migrate
 import secrets
 from flask_login import LoginManager
 
-db = SQLAlchemy()
-
 def create_app():
     app = Flask(__name__)
 
     app.config['SECRET_KEY'] = secrets.token_hex(16)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'agrimarket.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
+    db = SQLAlchemy(app)
 
     migrate = Migrate(app, db)
 
