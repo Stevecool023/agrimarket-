@@ -5,9 +5,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import secrets
-from flask_login import LoginManager
+# from flask_login import LoginManager
+# from app.routes import main_bp, auth_bp
+from app.models import User # Import models
 
-db = SQLAlchemy()
+
+# db = SQLAlchemy()
 
 def create_app():
     # Create the Flask application instance
@@ -27,15 +30,12 @@ def create_app():
     login_manager = LoginManager(app)
     login_manager.login_view = 'login' # 'login' is the endpoint for my login route
 
-    # Import and register blueprints
-    from app.routes import bp as main_bp  # Import the Blueprint instance
+    # Register blueprints
     app.register_blueprint(main_bp)
-
-    # Import models
-    from app.models import User
+    app.register_blueprint(auth_bp)
 
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
 
-    return app
+    return app, db
