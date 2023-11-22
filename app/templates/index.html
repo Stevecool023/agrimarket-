@@ -40,7 +40,7 @@
       <!-- Product Cards generated dynamically from Flask route -->
       {% for product in products %}
         <article class="product-card">
-          <img src="{{ url_for('static', filename='images/' + product.image_url) }}" alt="{{ product.name }}">
+          <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}">
           <h3>{{ product.name }}</h3>
           <p>{{ product.description }}</p>
           <button>Add to Cart</button>

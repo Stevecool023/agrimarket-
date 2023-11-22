@@ -4,14 +4,16 @@ from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, current_user, logout_user
 from app import db
 from app.models import User, BlogPost, Item, Cart
-bp = Blueprint('main', __name__)
 
-@bp.route('/')
+main_bp = Blueprint('main', __name__)
+auth_bp = Blueprint('auth', __name__)
+
+@main_bp.route('/')
 def index():
     products = Item.query.filter_by(item_type='product').all()
     return render_template('index.html', products=products)
 
-@bp.route('/add_to_cart/<int:item_id>')
+@main_bp.route('/add_to_cart/<int:item_id>')
 @login_required
 def add_to_cart(item_id):
     item = Item.query.get(item_id)
@@ -24,13 +26,13 @@ def add_to_cart(item_id):
         flash("Item not found.", 'danger')
     return redirect(url_for('main.index'))
 
-@bp.route('/view_cart')
+@main_bp.route('/view_cart')
 @login_required
 def view_cart():
     user_cart_items = Cart.query.filter_by(user=current_user).all()
     return render_template('cart.html', cart_items=user_cart_items)
 
-@bp.route('/blog')
+@main_bp.route('/blog')
 def blog():
     # Logic to fetch blog data
     # For example, you might have a list of blog posts
@@ -42,5 +44,18 @@ def blog():
     ]
 
     return render_template('blog.html', blog_posts=blog_posts)
+
+# Authentication routes
+@auth_bp.route('/login', methods=['GET', 'POST'])
+def login():
+    # Handle login logic
+    return render_template('login.html')
+
+@auth_bp.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('main.index'))
 
 # Add more routes as needed for other functionalities
