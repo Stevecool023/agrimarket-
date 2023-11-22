@@ -25,6 +25,8 @@
     <div class="search-cart">
       <input type="text" placeholder="Search...">
       <a href="{{ url_for('main.view_cart') }}" class="cart-icon">Cart</a>
+      <!-- Add a link to the login page -->
+      <b><a href="{{ url_for('auth.login') }}">Login</a></b>
     </div>
   </header>
 
@@ -45,7 +47,12 @@
           <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}">
           <h3>{{ product.name }}</h3>
           <p>{{ product.description }}</p>
-          <button>Add to Cart</button>
+
+	  <!-- Add a form for each product with a hidden input for the product ID -->
+	  <form action="{{ url_for('main.add_to_cart', item_id=product.id) }}" method="POST">
+	     <input type="hidden" name="item_id" value="{{ product.id }}">
+	     <button type="submit">Add to Cart</button>
+	  </form>
         </article>
       {% endfor %}
     </section>

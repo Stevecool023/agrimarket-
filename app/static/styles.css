@@ -13,7 +13,8 @@ body {
 
 /* Class to style the main content area */
 .main-content {
-	background-color: #f5f5dc;
+	background-color: #ffffff;
+	/* color: #ffffff; /* White text for contrast */
 }
 
 header {
@@ -95,7 +96,8 @@ nav a {
     padding: 10px;
     border: 1px solid #ddd;
     text-align: center;
-    background-color: white;
+    background-color: #001f3f;
+    color: #ffffff;
     display: inline-block;
     box-sizing: border-box;
 }

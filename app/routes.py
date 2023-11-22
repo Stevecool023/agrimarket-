@@ -1,5 +1,6 @@
 # routes logic
 
+from app.forms import LoginForm, RegistrationForm
 from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, current_user, logout_user
 from werkzeug.security import check_password_hash
@@ -15,7 +16,7 @@ def index():
     products = Item.query.filter_by(item_type='product').all()
     return render_template('index.html', products=products)
 
-@main_bp.route('/add_to_cart/<int:item_id>')
+@main_bp.route('/add_to_cart/<int:item_id>', methods=['POST'])
 @login_required
 def add_to_cart(item_id):
     item = Item.query.get(item_id)
@@ -77,5 +78,24 @@ def logout():
     logout_user()
     flash('You have been logged out.', 'success')
     return redirect(url_for('main.index'))
+
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+
+    # Handle registration logic
+
+    if form.validate_on_submit():
+        # Perform registration logic
+
+        # E.g., creating a new user and adding them to the database
+        new_user = User(username=form.username.data, password=generate_password_hash(form.password.data))
+        db.session.add(new_user)
+        db.session.commit()
+
+        flash('Registration successful! You can now log in.', 'success')
+        return redirect(url_for('auth.login'))
+
+    return render_template('register.html', form=form)
 
 # Add more routes as needed for other functionalities
