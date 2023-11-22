@@ -11,6 +11,11 @@ body {
     line-height: 1.6;
 }
 
+/* Class to style the main content area */
+.main-content {
+	background-color: #f5f5dc;
+}
+
 header {
     background-color: #4CAF50;
     color: white;

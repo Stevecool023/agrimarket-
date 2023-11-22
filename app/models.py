@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from flask_login import UserMixin
-from app.__init__ import db
+from app import db
 
 
 class Item(db.Model):

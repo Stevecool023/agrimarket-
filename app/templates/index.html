@@ -10,7 +10,7 @@
   <title>Agrimarket - Home</title>
 </head>
 
-<body>
+<body class="main-content">
   <header>
     <div class="logo">
       <!-- New Images at the top, evenly distributed -->
@@ -36,7 +36,9 @@
       <p class="branding-text">Explore a world of agriculture, find everything you need, and take your farming to the next level.</p>
       <p class="branding-text colored">Your number 1 home for agri-solutions.</p>
       <p class="branding-text">Your gateway to a thriving farming experience.</p>
+   </div>
 
+   <div>
       <!-- Product Cards generated dynamically from Flask route -->
       {% for product in products %}
         <article class="product-card">

@@ -12,9 +12,7 @@
 <body>
     <header>
 	<b><h1><a href="/">Agrimarket</a></h1></b>
-	<b><a href="{{ url_for('main.homepage') }}">Home</a></b>
-	<b><a href="{{ url_for('main.products') }}">Products</a></b>
-	<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
+	<b><a href="{{ url_for('main.index') }}">Home</a></b>
 	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
         <b><a href="{{ url_for('main.view_cart') }}">Cart</a></b>
     </header>
@@ -59,12 +57,10 @@
     </section>
 
     <footer>
-	<b><li><a href="{{ url_for('main.homepage') }}">Home</a></li></b>
-	<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
-	<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	<b><li><a href="{{ url_for('main.index') }}">Home</a></li></b>
 	<b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
 	<b><li><a href="{{ url_for('main.view_cart') }}">Cart</a></li></b>
-        <p>Contact us at info@agrimarket.com</p>
+        <p>Contact us at karanjastephenn@gmail.com</p>
     </footer>
 </body>
 </html>

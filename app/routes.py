@@ -2,15 +2,16 @@
 
 from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, current_user, logout_user
+from werkzeug.security import check_password_hash
 from app.models import User, BlogPost, Item, Cart
-from app import create_app
+from app import db
 
 main_bp = Blueprint('main', __name__)
 auth_bp = Blueprint('auth', __name__)
 
 @main_bp.route('/')
 def index():
-    app, db = create_app()  # Import inside the function
+    from app.models import Item  # Import inside the function
     products = Item.query.filter_by(item_type='product').all()
     return render_template('index.html', products=products)
 
@@ -49,14 +50,26 @@ def blog():
 # Authentication routes
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-    app, db = create_app()  # Import inside the function
+    from app.models import User  # Import inside the function
     form = LoginForm() # Instantiate the LoginForm
+
     # Handle login logic
+
     if form.validate_on_submit():
         # Perform login logic
-        pass
 
-    return render_template('login.html')
+        # Check the user's credentials (you need to implement this part)
+        user = User.query.filter_by(username=form.username.data).first()
+
+        if user and check_password_hash(user.password, form.password.data):
+            login_user(user)
+            flash('Login successful!', 'success')
+            return redirect(url_for('main.index'))
+        else:
+            flash('Login unsuccessful. Please check your username and password.', 'danger')
+
+
+    return render_template('login.html', form=form)
 
 @auth_bp.route('/logout')
 @login_required
