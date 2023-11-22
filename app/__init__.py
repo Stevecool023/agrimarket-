@@ -32,4 +32,7 @@ def create_app():
     def load_user(user_id):
         return User.query.get(int(user_id))
 
+    # Call init_app here
+    db.init_app(app)
+
     return app, db
