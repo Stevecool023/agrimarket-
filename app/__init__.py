@@ -20,7 +20,7 @@ def create_app():
     migrate = Migrate(app, db)
 
     login_manager = LoginManager(app)
-    login_manager.login_view = 'login'
+    login_manager.login_view = 'auth.login'
 
     from app.routes import main_bp, auth_bp
     app.register_blueprint(main_bp)
