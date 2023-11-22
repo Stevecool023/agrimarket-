@@ -3,9 +3,10 @@
 from app.forms import LoginForm, RegistrationForm
 from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, current_user, logout_user
-from werkzeug.security import check_password_hash
+from werkzeug.security import check_password_hash, generate_password_hash
 from app.models import User, BlogPost, Item, Cart
 from app import db
+from passlib.hash import pbkdf2_sha256
 
 main_bp = Blueprint('main', __name__)
 auth_bp = Blueprint('auth', __name__)
@@ -81,6 +82,7 @@ def logout():
 
 @auth_bp.route('/register', methods=['GET', 'POST'])
 def register():
+    from app.models import User  # Import inside the function
     form = RegistrationForm()
 
     # Handle registration logic
@@ -88,7 +90,15 @@ def register():
     if form.validate_on_submit():
         # Perform registration logic
 
-        # E.g., creating a new user and adding them to the database
+        # Check if the password and confirmed password match
+        if form.password.data != form.confirm_password.data:
+            flash('Password and Confirm Password must match.', 'danger')
+            return render_template('register.html', form=form)
+
+        # Hash the password before storing it in the database
+        hashed_password = pbkdf2_sha256.hash(form.password.data)
+
+        # creating a new user and adding them to the database
         new_user = User(username=form.username.data, password=generate_password_hash(form.password.data))
         db.session.add(new_user)
         db.session.commit()
