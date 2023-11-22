@@ -13,7 +13,7 @@ def create_app():
     app.config['SECRET_KEY'] = secrets.token_hex(16)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.path.dirname(os.path.abspath(__file__)), 'instance', 'agrimarket.db')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    
+
     db = SQLAlchemy(app)
 
     migrate = Migrate(app, db)
@@ -30,7 +30,5 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
-
-    # Remove the redundant db.init_app(app) call here
 
     return app, db

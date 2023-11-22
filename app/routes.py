@@ -2,15 +2,15 @@
 
 from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import login_user, login_required, current_user, logout_user
-from app import db
 from app.models import User, BlogPost, Item, Cart
-from app.forms import LoginForm
+from app import create_app
 
 main_bp = Blueprint('main', __name__)
 auth_bp = Blueprint('auth', __name__)
 
 @main_bp.route('/')
 def index():
+    app, db = create_app()  # Import inside the function
     products = Item.query.filter_by(item_type='product').all()
     return render_template('index.html', products=products)
 
@@ -49,6 +49,7 @@ def blog():
 # Authentication routes
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    app, db = create_app()  # Import inside the function
     form = LoginForm() # Instantiate the LoginForm
     # Handle login logic
     if form.validate_on_submit():
