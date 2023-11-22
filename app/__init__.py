@@ -5,12 +5,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import secrets
-# from flask_login import LoginManager
-# from app.routes import main_bp, auth_bp
-from app.models import User # Import models
-
-
-# db = SQLAlchemy()
+from flask_login import LoginManager
+from app.models import User  # Move the import inside the function
 
 def create_app():
     # Create the Flask application instance
@@ -23,7 +19,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False    # Disable Flask-SQLAlchemy modification tracking
 
     # Initialize SQLAlchemy
-    db.init_app(app)
+    db = SQLAlchemy(app)
     migrate = Migrate(app, db)
 
     # Initialize Flask-Login
@@ -31,6 +27,7 @@ def create_app():
     login_manager.login_view = 'login' # 'login' is the endpoint for my login route
 
     # Register blueprints
+    from app.routes import main_bp, auth_bp  # Importing inside the function
     app.register_blueprint(main_bp)
     app.register_blueprint(auth_bp)
 
