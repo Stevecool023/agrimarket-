@@ -3,44 +3,23 @@
 # add products and equipment
 
 from app import create_app, db
-from app.models import Item, Product, Equipment
+from app.models import Item
 
 app = create_app()
 
 def add_item(name, description, item_type, code=None, image=None, cost=None):
     with app.app_context():
-        if item_type == 'product':
-            # Check if a product with the given code already exists
-            existing_product = Product.query.filter_by(code=code).first()
-            if existing_product:
-                # Update existing product
-                existing_product.name = name
-                existing_product.description = description
-                existing_product.image_url = image
-                existing_product.cost = cost
-            else:
-                # Create a new product
-                item = Product(name=name, description=description, code=code, image_url=image, cost=cost)
-                item.item_type = item_type  # Set the item_type field
-                db.session.add(item)
-
-        elif item_type == 'equipment':
-            # Check if an equipment with the given code already exists
-            existing_equipment = Equipment.query.filter_by(code=code).first()
-            if existing_equipment:
-                # Update existing product
-                existing_equipment.name = name
-                existing_equipment.description = description
-                existing_equipment.image_url = image
-                existing_equipment.cost = cost
-            else:
-                # Create new equipment
-                item = Equipment(name=name, description=description, code=code, image_url=image, cost=cost)
-                item.item_type = item_type  # Set the item_type field
-                db.session.add(item)
+        existing_item = Item.query.filter_by(code=code).first()
+        if existing_item:
+            # Update existing item
+            existing_item.name = name
+            existing_item.description = description
+            existing_item.image_url = image
+            existing_item.cost = cost
         else:
-            # Handle other item types as needed
-            return
+            # Create a new item
+            item = Item(name=name, description=description, code=code, image_url=image, cost=cost, item_type=item_type)
+            db.session.add(item)
 
         db.session.commit()
 
@@ -74,14 +53,6 @@ products_to_add = [
     {"name": "chicken", "description": "Chicken - Nutritious feed for healthy and happy chickens.", "code": "CK01", "image": "images/chicken.jpg", "cost": 6.00},
     {"name": "maize", "description": "Maize - Essential grain for various culinary uses.", "code": "MZ01", "image": "images/maize.jpg", "cost": 4.00},
     {"name": "potatoes", "description": "Potatoes - Versatile and delicious tubers for your kitchen.", "code": "PT01", "image": "images/potatoes.jpg", "cost": 3.00},
-]
-
-# Add products to the database
-for product_data in products_to_add:
-    add_item(product_data["name"], product_data["description"], item_type='product', code=product_data["code"], image=product_data["image"], cost=product_data["cost"])
-
-# List of equipment to add
-equipment_to_add = [
     {"name": "farm machinery", "description": "High-quality farm machinery for efficient agricultural operations.", "code": "FM01", "image": "images/farm machinery.jpg", "cost": 2000.00},
     {"name": "farm tools", "description": "Durable and reliable farm tools for various agricultural tasks.", "code": "FT02", "image": "images/farm tools.jpg", "cost": 50.00},
     {"name": "panga", "description": "A sharp and durable panga, essential for various cutting and clearing tasks on the farm.", "code": "PN01", "image": "images/panga.jpg", "cost": 10.00},
@@ -96,8 +67,8 @@ equipment_to_add = [
     {"name": "fertilizer", "description": "Fertilizer - Essential for promoting healthy plant growth and productivity.", "code": "FTL01", "image": "images/fertilizer.jpg", "cost": 25.00},
 ]
 
-# Add equipment to the database
-for equipment_data in equipment_to_add:
-    add_item(equipment_data["name"], equipment_data["description"], item_type='equipment', code=equipment_data["code"], image=equipment_data["image"], cost=equipment_data["cost"])
+# Add products to the database
+for product_data in products_to_add:
+        add_item(product_data["name"], product_data["description"], item_type='product', code=product_data["code"], image=product_data["image"], cost=product_data["cost"])
 
-print("Products and equipment added successfully.")
+print("Products added successfully.")

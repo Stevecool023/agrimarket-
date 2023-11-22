@@ -18,21 +18,6 @@ class Item(db.Model):
     def __repr__(self):
         return f"Item(id={self.id}, name={self.name}, item_type={self.item_type}, code={self.code})"
 
-class Product(Item):
-    id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
-    __mapper_args__ = {'polymorphic_identity': 'product'}
-    __tablename__ = 'product'
-
-    def __repr__(self):
-        return f"Product(id={self.id}, name={self.name}, code={self.code})"
-
-class Equipment(Item):
-    id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key=True)
-    __mapper_args__ = {'polymorphic_identity': 'equipment'}
-    __tablename__ = 'equipment'
-
-    def __repr__(self):
-        return f"Equipment(id={self.id}, name={self.name}, code={self.code})"
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)

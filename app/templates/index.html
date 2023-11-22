@@ -20,9 +20,7 @@
       <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
     </div>
     	<b><h1><a href="/">Agrimarket</a></h1></b>
-        <b><a href="/">Home</a></b>
-	<b><a href="{{ url_for('main.products') }}">Products</a></b>
-	<b><a href="{{ url_for('main.equipment') }}">Equipment</a></b>
+	<b><a href="{{ url_for('main.index') }}">Home</a></b>
 	<b><a href="{{ url_for('main.blog') }}">Blog</a></b>
     <div class="search-cart">
       <input type="text" placeholder="Search...">
@@ -55,39 +53,27 @@
       </article>
       <!-- Repeat for other products -->
     </section>
+  </div>
+  <h1>dopefarm agricultural products</h1>
+
 
     <!-- New Images at the bottom -->
     <section class="brand-images">
-        <img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
-        <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
-        <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
-        <img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
+	    <img src="{{ url_for('static', filename='images/Company logo.jpg') }}" alt="Company Logo">
+	    <img src="{{ url_for('static', filename='images/agriculture.jpg') }}" alt="Agriculture">
+	    <img src="{{ url_for('static', filename='images/greenagrilogo.jpg') }}" alt="Green Agri Logo">
+	    <img src="{{ url_for('static', filename='images/agrimoji.jpg') }}" alt="Agrimarket Logo">
     </section>
-  </div>
-
-  <h1>Product List</h1>
-
-    {% for product in products %}
-        <div>
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <p>Cost: ${{ product.cost }}</p>
-            <img src="{{ url_for('static', filename=product.image_url) }}" alt="{{ product.name }}" width="200">
-            <a href="{{ url_for('main.add_to_cart', item_id=product.id) }}">Add to Cart</a>
-        </div>
-    {% endfor %}
 
   <footer>
     <div class="contact-info">
       <h3>Contact Us</h3>
-      <p>Email: info@agrimarket.com</p>
-      <p>Phone: +123456789</p>
+      <p>Email: karanjastephenn@gmail.com</p>
+      <p>Phone: +254708452957</p>
     </div>
     <div class="footer-links">
       <ul>
-	<b><li><a href="/">Home</a></li></b>
-	<b><li><a href="{{ url_for('main.products') }}">Products</a></li></b>
-	<b><li><a href="{{ url_for('main.equipment') }}">Equipment</a></li></b>
+	      <b><li><a href="{{ url_for('main.index') }}">Home</a></li></b>
 	<b><li><a href="{{ url_for('main.blog') }}">Blog</a></li></b>
 	<b><li><a href="{{ url_for('main.view_cart') }}">Cart</a></li></b>
 	<b><li><a href="#">Contact</a></li></b>

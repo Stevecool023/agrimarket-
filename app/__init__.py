@@ -5,6 +5,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import secrets
+# from app.routes import bp as main_bp # Import the Blueprint instance
+# app.register_blueprint(main_bp)
 
 db = SQLAlchemy()
 
