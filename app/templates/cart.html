@@ -30,23 +30,16 @@
 
 	</header>
 
-	{% for cart_item in cart_contents %}
+	<h1>Shopping Cart</h1>
+
+    {% for cart_item in cart_items %}
         <div>
             <h2>{{ cart_item.item.name }}</h2>
-            <p>{{ cart_item.item.description }}</p>
-
-            {% if cart_item.item.image_filename %}
-                <img src="{{ url_for('static', filename=cart_item.item.image_filename) }}" alt="{{ cart_item.item.name }}">
-            {% else %}
-                <p>No image available</p>
-            {% endif %}
-
             <p>Quantity: {{ cart_item.quantity }}</p>
+            <p>Cost per item: ${{ cart_item.item.cost }}</p>
+            <p>Total cost: ${{ cart_item.quantity * cart_item.item.cost }}</p>
         </div>
-        <hr>
     {% endfor %}
-
-    <a href="{{ url_for('main.products') }}">Continue Shopping</a>
 
 
 	<footer>
